@@ -1,21 +1,19 @@
 ---
 layout: default
-title: Tietorakenteet ja algoritmit <br> syksy 2022
+title: Tietorakenteet ja algoritmit <br> kevät 2023
 ---
 
 # Tietoa kurssista
 
 _Tietorakenteet ja algoritmit_ on tietojenkäsittelytieteen aineopintokurssi, joka muodostuu kahdesta 5 op laajuisesta osasuorituksesta. Kurssin aiheita ovat mm. järjestäminen, lista- ja joukkorakenteet, dynaaminen ohjelmointi sekä verkkoalgoritmit.
 
-Syksyllä 2022 voit suorittaa kurssin verkkokurssina, jonka materiaali on tällä sivustolla. Kurssi suoritetaan ratkomalla automaattisesti palautettavia tehtäviä. Kurssi järjestetään samalla tavalla Helsingin yliopiston tutkinto-opiskelijoille ja Avoimen yliopiston opiskelijoille.
+Keväällä 2023 voit suorittaa kurssin verkkokurssina, jonka materiaali on tällä sivustolla. Kurssi suoritetaan ratkomalla automaattisesti palautettavia tehtäviä. Kurssi järjestetään samalla tavalla Helsingin yliopiston tutkinto-opiskelijoille ja Avoimen yliopiston opiskelijoille.
 
 Kurssille ei ole ilmoittautumista etukäteen, vaan saat ohjeet suoritusmerkinnän hakemiseen kurssin aikana. Kaikki opiskelijat (myös Helsingin yliopiston tutkinto-opiskelijat) saavat suorituksen Avoimen yliopiston kautta.
 
 ## Luennot ja ohjaus
 
-Kurssin I-osan aloitusluento järjestetään Zoomissa to 8.9. klo 14:15–15:45. [Luentotallenne](https://www2.helsinki.fi/fi/unitube/video/79d6e34b-d092-4895-8962-f9ebdc8878ee)
-
-Kurssin II-osan aloitusluento järjestetään Zoomissa to 3.11. klo 14:15–15:45. [Luentotallenne](https://www2.helsinki.fi/fi/unitube/video/b56550c9-2df5-4391-9c24-7341e0ad286f)
+Keväällä 2023 kurssilla ei ole luentoja, vaan kurssi suoritetaan verkkomateriaalin perusteella.
 
 Kurssin ohjausta järjestetään Discordissa, jossa voit keskustella kurssin järjestäjien ja muiden opiskelijoiden kanssa. [Liity ryhmään](https://study.cs.helsinki.fi/discord/join/tira)
 
@@ -31,20 +29,8 @@ Kurssi muodostuu kahdesta erillisestä 5 op osasuorituksesta. Molemmissa osissa 
 * 48–51 tehtävää: arvosana 4
 * 52–56 tehtävää: arvosana 5
 
-Kurssin I-osan tehtävien deadline on su 30.10. klo 23:59. Tehtävät julkaistaan seuraavan aikataulun mukaisesti:
-
-<table style="border-collapse:collapse">
-<tr><td>viikko</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td></tr>
-<tr><td>julkaisu</td><td>5.9.</td><td>12.9.</td><td>12.9.</td><td>19.9.</td><td>19.9.</td><td>26.9.</td><td>26.9.</td></tr>
-</table>
-
-Kurssin II-osan tehtävien deadline on pe 23.12. klo 23:59. Tehtävät julkaistaan seuraavan aikataulun mukaisesti:
-
-<table style="border-collapse:collapse">
-<tr><td>viikko</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td></tr>
-<tr><td>julkaisu</td><td>31.10.</td><td>7.11.</td><td>7.11.</td><td>14.11.</td><td>14.11.</td><td>21.11.</td><td>21.11.</td></tr>
-</table>
+Kurssin I-osan tehtävien deadline on su 12.3. klo 23:59. Kurssin II-osan tehtävien deadline on su 14.5. klo 23:59.
 
 ## Yhteystiedot
 
-Kurssin luennoija syksyllä 2022 on Antti Laaksonen. Voit ottaa yhteyttä lähettämällä [sähköpostia](mailto:ahslaaks@cs.helsinki.fi) tai viestin Discordissa.
+Kurssin luennoija keväällä 2023 on Antti Laaksonen. Voit ottaa yhteyttä lähettämällä [sähköpostia](mailto:ahslaaks@cs.helsinki.fi) tai viestin Discordissa.

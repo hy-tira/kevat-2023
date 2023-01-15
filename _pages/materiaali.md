@@ -16,7 +16,7 @@ Kurssin jokainen viikko käsittelee vastaavaa kirjan lukua (I-osa luvut 1–7 ja
 
 ### Viikko 1
 
-* Video: [Kurssin I-osan aloitusluento](https://www2.helsinki.fi/fi/unitube/video/79d6e34b-d092-4895-8962-f9ebdc8878ee)
+* Video: [Kurssin I-osan aloitusluento](https://www2.helsinki.fi/fi/unitube/video/79d6e34b-d092-4895-8962-f9ebdc8878ee) (syksyn 2022 kurssilta)
 * [Vinkkejä ohjelmointiin](python-vinkit.html)
 * Lähetys CSES:ään komentoriviltä [Ohje](https://github.com/csesfi/cses-cli/wiki/User-manual)
 
@@ -58,7 +58,7 @@ Kurssin jokainen viikko käsittelee vastaavaa kirjan lukua (I-osa luvut 1–7 ja
 
 ### Viikko 8
 
-* Video: [Kurssin II-osan aloitusluento](https://www2.helsinki.fi/fi/unitube/video/b56550c9-2df5-4391-9c24-7341e0ad286f)
+* Video: [Kurssin II-osan aloitusluento](https://www2.helsinki.fi/fi/unitube/video/b56550c9-2df5-4391-9c24-7341e0ad286f) (syksyn 2022 kurssilta)
 * Video: Esitystapojen laskeminen [Ideointi](https://www.helsinki.fi/fi/unitube/video/fb33584e-da29-4f09-a8e9-6d596261763e)
 
 ### Viikko 9
