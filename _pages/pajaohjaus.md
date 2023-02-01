@@ -9,7 +9,7 @@ Keväällä 2023 ohjausta on tarjolla seuraavasti välillä 16.1.–14.5.:
 
 * tiistaisin klo 13–16
 * keskiviikkoisin klo 11–14
-* torstaisin 15–18
+* torstaisin klo 15–18
 * perjantaisin klo 13–16
 
 Ohjaus järjestetään Exactumissa salissa BK107.
