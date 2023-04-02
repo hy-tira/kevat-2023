@@ -14,7 +14,7 @@ Kevään 2023 Tira on järjestetty MOOC-kurssina, jossa arvostelu perustuu kurss
 Tehtävät palautetaan CSES-järjestelmään, joka arvostelee ne automaattisesti.
 Kurssilla ei ole tenttiä, vaan arvostelu perustuu pelkästään tehtäviin.
 
-Kurssisivustolla on ilmoitettu [kurssin pelisäännöt](pelisaannot.html),
+Kurssisivustolla on julkaistu [kurssin pelisäännöt](pelisaannot.html),
 jotka määrittävät, että kurssilla palautettavat ratkaisut tulee tuottaa itsenäisesti.
 Tehtävistä saa keskustella muiden kanssa ja tehtävissä saa hyödyntää nettiä,
 mutta ratkaisut tulee kirjoittaa alusta alkaen itse.
@@ -24,8 +24,8 @@ Tirassa on havaittu edellisinä vuosina jonkin verran vilppiä, mutta tänä kev
 
 ## Paljonko vilppiä esiintyy?
 
-Kevään 2023 Tiran I-osaan osallistui 366 opiskelijaa. Kurssin arvioinnin aikana havaittiin X opiskelijaa,
-joita epäillään vilpistä. Niinpä X % kurssin opiskelijoista epäillään vilpistä.
+Kevään 2023 Tiran I-osaan osallistui 366 opiskelijaa. Kurssin arvostelussa havaittiin 63 opiskelijaa,
+joita epäillään vilpistä. Niinpä 17 % kurssin opiskelijoista epäillään vilpistä.
 
 Näissä epäilyissä opiskelija on lähettänyt ratkaisun, joka selkeästi ei vaikuta itsenäisesti laaditulta,
 joten kyse on luultavasti todellisesta vilpistä.
@@ -35,9 +35,9 @@ On kuitenkin mahdollista, että epäily osoittautuu aiheettomaksi.
 
 Vilppiä voidaan havaita etsimällä ratkaisuja, jotka eivät vaikuta itsenäisesti laadituilta. Yleisiä tilanteita ovat, että opiskelijan ratkaisu muistuttaa malliratkaisua tai kaksi opiskelijaa ovat lähettäneet samanlaisen ratkaisun.
 
-Ratkaisujen vertailussa täytyy ottaa huomioon, että ratkaisujen välillä saattaa olla pieniä eroja. Esimerkiksi koodin muuttujien nimien vaihtaminen on yleinen tapa koettaa kätkeä vilppiä. Usein koodien rakenteessa on muitakin pieniä eroja.
+Ratkaisujen vertailussa täytyy ottaa huomioon, että ratkaisujen välillä saattaa olla pieniä eroja. Esimerkiksi koodin muuttujien nimien vaihtaminen vaikuttaa olevan yleinen tapa koettaa kätkeä vilppiä. Usein koodien rakenteessa on muitakin pieniä eroja.
 
-Vilppiä voidaan havaita myös siitä, että opiskelija on lähettänyt ratkaisuja poikkeuksellisella tavalla: esimerkiksi opiskelija on saanut paljon tehtäviä ensimmäisellä yrityksellä oikein tai eri tehtävien ratkaisujen lähetysajat ovat hyvin lähellä toisiaan.
+Vilppiä voidaan havaita myös siitä, että opiskelija on lähettänyt ratkaisuja poikkeuksellisella tavalla. Esimerkiksi opiskelija on saanut paljon tehtäviä ensimmäisellä yrityksellä oikein tai eri tehtävien ratkaisujen lähetysajat ovat lähellä toisiaan.
 
 ### Esimerkki: vilppi malliratkaisun avulla
 
@@ -110,7 +110,7 @@ def count(n, k):
 
 Tässä vaikuttaa, että malliratkaisuun on tehty useita pieniä muutoksia.
 Muuttujien nimien vaihtamisen lisäksi rivien järjestystä on muutettu, for-silmukka on korvattu while-silmukalla ja
-if-rakenne on jaettu kahteen osaan.
+if-rakenne on jaettu kahteen osaan. Koodiin on myös lisätty rivinvaihtoja.
 
 **Ratkaisu 3**
 
@@ -142,7 +142,7 @@ ratkaisun ideaa.
 ## Mitä vilpistä seuraa?
 
 Kurssin luennoija ottaa yhteyttä vilpistä epäiltyyn opiskelijaan ja pyytää häneltä selitystä asiaan.
-Jos epäily vilpistä on aiheellinen, opiskelija menettää pisteet tehtävästä tai tehtävistä ja asiasta ilmoitetaan koulutusohjelman johtajalle.
+Jos kyse todella on vilpistä, opiskelija menettää pisteet tehtävästä tai tehtävistä ja asiasta ilmoitetaan koulutusohjelman johtajalle.
 
 ## Miksi vilppiä esiintyy?
 
@@ -152,7 +152,7 @@ Kun kurssin tehtävät arvioidaan automaattisesti, saattaa tulla vaikutelma, ett
 
 Vaikka kurssisivustolla on julkaistu kurssin pelisäännöt, osa opiskelijoista ei ole välttämättä huomannut niitä tai lukenut niitä huolellisesti. Niinpä kaikille opiskelijoille ei ole välttämättä selvää, mikä on vilppiä.
 
-Tiran aiheet eivät kiinnosta kaikkia opiskelijoita tai tuntuvat liian vaikeilta, jolloin ei tunnu mielekkäältä käyttää aikaa kurssin tehtäviin. Opiskelijan esitiedot saattavat olla myös puutteelliset kurssin suorittamiseen.
+Tiran aiheet eivät kiinnosta kaikkia opiskelijoita tai tuntuvat liian vaikeilta, jolloin voi olla pienempi kynnys vilppiin. Opiskelijan esitiedot saattavat olla myös puutteelliset kurssin suorittamiseen.
 
 ## Miten estää vilppiä?
 
@@ -160,11 +160,11 @@ Tehokas keino estää malliratkaisuihin liittyvää vilppiä on uudistaa jatkuva
 
 Tehtävien laadinnassa tulisi pyrkiä siihen, että tehtävien ratkaisuja ei löydy suoraan netistä. Netistä löytyy kuitenkin ratkaisuja todella moniin tehtäviin, ja on käytännössä vaikeaa laatia kurssille sopivia tehtäviä, joihin liittyen ei löydy tietoa netistä.
 
-Tiran formaattia olisi mahdollista muuttaa niin, että keskeisenä osana suorituksessa olisi valvottu tentti. Tehtäviin perustuva formaatti on kuitenkin tuntunut paremmalta, koska tenttitilanne ei tunnu soveltuvan hyvin mittaamaan kykyä suunnitella algoritmeja. Lisäksi valvotun tentin järjestäminen Avoimen yliopiston opiskelijoille olisi hankalaa.
+Tiran formaattia olisi mahdollista muuttaa niin, että keskeisenä osana suorituksessa olisi valvottu tentti. Tehtäviin perustuva formaatti on kuitenkin tuntunut paremmalta, koska tenttitilanne ei tunnu soveltuvan hyvin mittaamaan kykyä laatia algoritmeja. Lisäksi valvotun tentin järjestäminen Avoimen yliopiston opiskelijoille olisi hankalaa.
 
 Kurssin tiedotusta on mahdollista parantaa niin, että kurssin pelisäännöt tulevat selvemmin esille. Esimerkiksi pelisäännöt voisivat tulla näkyviin ennen ensimmäisen tehtävän lähettämistä CSES:ssä, jotta kurssin opiskelijat huomaisivat ne todennäköisemmin.
 
-Kurssin materiaalia ja tehtäviä on mahdollista parantaa niin, että materiaali tukee paremmin tehtäviä. Kurssin materiaaliin on tulossa lisää esimerkkejä algoritmien suunnitteluun liittyen. Tämä toivottavasti vähentää tarvetta vilppiin. Tiran aihepiiriä ei kuitenkaan voi muuttaa ja on ymmärrettävää, ettei Tira tule koskaan olemaan kaikkien lempikurssi.
+Kurssin materiaalia ja tehtäviä on mahdollista parantaa niin, että materiaali tukee paremmin tehtäviä. Kurssin materiaaliin on tulossa lisää esimerkkejä algoritmien suunnitteluun liittyen, mikä toivottavasti vähentää tarvetta vilppiin. Tiran aihepiiriä ei kuitenkaan voi muuttaa ja on ymmärrettävää, ettei Tira tule koskaan olemaan kaikkien lempikurssi.
 
 ## Miten hyvin vilppi huomataan?
 
@@ -174,13 +174,13 @@ Lisäksi on mahdollista, että joku toinen kurssin ulkopuolinen henkilö laatii 
 
 Havaitun vilpin lisäksi on luultavasti muutakin esimerkiksi yllä olevan kaltaista vilppiä, mutta on vaikeaa arvioida, miten paljon sitä esiintyy.
 
-## Esiintyykö vilppiä muilla kursseilla?
+## Tapahtuuko vilppiä muilla kursseilla?
 
 Vilppiä tapahtuu Tiran lisäksi muillakin kursseilla. Vaihtelee kurssista ja toteutuskerrasta riippuen, paljonko käytetään aikaa opiskelijoiden ratkaisujen läpikäyntiin. Tämä on asia, josta olisi hyvä keskustella enemmänkin tietojenkäsittelytieteen opetuksessa ja erityisesti MOOC-kurssien järjestämiseen liittyen.
 
-## Miten ChatGPT vaikuttaa asiaan?
+## Miten uudet tekoälyt vaikuttavat asiaan?
 
-Tiran ja muiden kurssien tulevaisuudessa täytyy ottaa myös huomioon, että ChatGPT pystyy antamaan ratkaisuja moniin ohjelmointitehtäviin.
+Tiran ja muiden kurssien tulevaisuudessa täytyy ottaa myös huomioon, että uudet tekoälyt (kuten ChatGPT) pystyvät antamaan ratkaisuja moniin ohjelmointitehtäviin.
 
 ### Esimerkki ChatGPT:n käyttämisestä Tirassa
 
