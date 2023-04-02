@@ -10,7 +10,7 @@ Tämä raportti kuvaa, millaista vilppiä Tirassa epäillään ja miten laajalta
 
 ## Taustaa
 
-Tira järjestetään MOOC-kurssina, jossa arvostelu perustuu kurssin aikana suoritettaviin tehtäviin.
+Kevään 2023 Tira on järjestetty MOOC-kurssina, jossa arvostelu perustuu kurssin tehtäviin.
 Tehtävät palautetaan CSES-järjestelmään, joka arvostelee ne automaattisesti.
 Kurssilla ei ole tenttiä, vaan arvostelu perustuu pelkästään tehtäviin.
 
@@ -18,8 +18,9 @@ Kurssisivustolla on ilmoitettu [kurssin pelisäännöt](pelisaannot.html),
 jotka määrittävät, että kurssilla palautettavat ratkaisut tulee tuottaa itsenäisesti.
 Tehtävistä saa keskustella muiden kanssa ja tehtävissä saa hyödyntää nettiä,
 mutta ratkaisut tulee kirjoittaa alusta alkaen itse.
+Jos ratkaisu perustuu netistä löydettyyn ideaan, sen yhteydessä tulee ilmoittaa lähde.
 
-Tirassa on havaittu edellisinä vuosina jonkin verran vilppiä, mutta tänä keväänä ilmiö vaikuttaa selvästi aiempaa laajemmalta.
+Tirassa on havaittu edellisinä vuosina jonkin verran vilppiä, mutta tänä keväänä ilmiö vaikuttaa aiempaa laajemmalta.
 
 ## Paljonko vilppiä esiintyy?
 
@@ -28,15 +29,19 @@ joita epäillään vilpistä. Niinpä X % kurssin opiskelijoista epäillään vi
 
 Näissä epäilyissä opiskelija on lähettänyt ratkaisun, joka selkeästi ei vaikuta itsenäisesti laaditulta,
 joten kyse on luultavasti todellisesta vilpistä.
-Yleinen tilanne on, että opiskelija on lähettänyt ratkaisun, joka on lähes sama kuin tehtävän malliratkaisu.
-
-Kurssin luennoija ottaa yhteyttä vilpistä epäiltyyn opiskelijaan ja pyytää häneltä selitystä asiaan.
-On myös mahdollista, että epäily vilpistä osoittautuu aiheettomaksi.
+On kuitenkin mahdollista, että epäily osoittautuu aiheettomaksi.
 
 ## Miten vilppiä havaitaan?
 
-Tarkastellaan esimerkkinä kurssin viimeisen viikon tehtävää [Minimikeko](https://cses.fi/tira23k/task/2717).
-Tehtävän malliratkaisuna on seuraava koodi:
+Vilppiä voidaan havaita etsimällä ratkaisuja, jotka eivät vaikuta itsenäisesti laadituilta. Yleisiä tilanteita ovat, että opiskelijan ratkaisu muistuttaa malliratkaisua tai kaksi opiskelijaa ovat lähettäneet samanlaisen ratkaisun.
+
+Ratkaisujen vertailussa täytyy ottaa huomioon, että ratkaisujen välillä saattaa olla pieniä eroja. Esimerkiksi koodin muuttujien nimien vaihtaminen on yleinen tapa koettaa kätkeä vilppiä. Usein koodien rakenteessa on muitakin pieniä eroja.
+
+Vilppiä voidaan havaita myös siitä, että opiskelija on lähettänyt ratkaisuja poikkeuksellisella tavalla: esimerkiksi opiskelija on saanut paljon tehtäviä ensimmäisellä yrityksellä oikein tai eri tehtävien ratkaisujen lähetysajat ovat hyvin lähellä toisiaan.
+
+### Esimerkki: vilppi malliratkaisun avulla
+
+Tarkastellaan Tiran tehtävää [Minimikeko](https://cses.fi/tira23k/task/2717), jonka malliratkaisu on seuraava:
 
 ```python
 def count(n, k):
@@ -52,10 +57,9 @@ def count(n, k):
     return result
 ```
 
-Tehtävään liittyvää vilppiä voidaan havaita etsimällä ratkaisuja, jotka ovat lähellä malliratkaisua.
 Seuraavassa on kolme esimerkkiä opiskelijoiden ratkaisuista, joita epäillään vilpistä.
 
-### Esimerkki 1
+**Ratkaisu 1**
 
 ```python
 def count(n, k):
@@ -71,11 +75,9 @@ def count(n, k):
     return vastaus
 ```
 
-Tämä vaikuttaa olevan malliratkaisun kopio,
-jossa jokainen muuttujan nimi on käännetty englannista suomeksi.
-Tavoitteena on ehkä ollut kätkeä vilppi vaihtamalla muuttujien nimiä.
+Tämä koodi vastaa muuten täysin malliratkaisua, mutta jokaisen muuttujan nimi on käännetty englannista suomeksi.
 
-### Esimerkki 2
+**Ratkaisu 2**
 
 ```python
 def count(n, k):
@@ -107,12 +109,10 @@ def count(n, k):
 ```
 
 Tässä vaikuttaa, että malliratkaisuun on tehty useita pieniä muutoksia.
-Muuttujien nimien vaihtamisen lisäksi esimerkiksi
-rivien järjestystä on muutettu,
-for-silmukka on korvattu while-silmukalla ja
+Muuttujien nimien vaihtamisen lisäksi rivien järjestystä on muutettu, for-silmukka on korvattu while-silmukalla ja
 if-rakenne on jaettu kahteen osaan.
 
-### Esimerkki 3
+**Ratkaisu 3**
 
 ```python
 def count(n, k):
@@ -138,22 +138,141 @@ Myös tässä vaikuttaa, että malliratkaisuun on tehty joukko pieniä muutoksia
 Suurin ero malliratkaisuun verrattuna on, että listat luodaan eri tavalla.
 Koodissa on myös kommentti, joka ei kuitenkaan selitä juurikaan
 ratkaisun ideaa.
-    
+
+## Mitä vilpistä seuraa?
+
+Kurssin luennoija ottaa yhteyttä vilpistä epäiltyyn opiskelijaan ja pyytää häneltä selitystä asiaan.
+Jos epäily vilpistä on aiheellinen, opiskelija menettää pisteet tehtävästä tai tehtävistä ja asiasta ilmoitetaan koulutusohjelman johtajalle.
+
 ## Miksi vilppiä esiintyy?
 
-Mahdollisia syitä vilppiin ovat:
+Osalla opiskelijoista on käytössä tehtävien malliratkaisuja aiemmilta kursseilta. Tirassa ei ole mahdollista laatia uusia tehtäviä joka kurssille, ja tähän asti käytäntönä on ollut julkaista malliratkaisut deadlinen jälkeen. Lisäksi osaan tehtävistä voi löytää valmiita ratkaisuja netistä.
 
-* Opiskelijoilla on käytössä tehtävien malliratkaisuja edellisiltä kursseilta.
-* Osaan tehtävistä voi löytää valmiita ratkaisuja netistä.
-* Saattaa tulla vaikutelma, ettei kukaan käy läpi tehtävien lähetyksiä.
-* Vilppi tehtävissä saattaa tuntua hyväksyttävämmältä kuin tuntuisi vilppi tentissä.
-* Opiskelijoille ei ole selvää, mikä on vilppiä.
-* Tiran aiheet eivät kiinnosta kaikkia tai tuntuvat liian vaikeilta, jolloin ei tunnu mielekkäältä käyttää aikaa kurssin tehtäviin.
+Kun kurssin tehtävät arvioidaan automaattisesti, saattaa tulla vaikutelma, ettei kukaan ihminen käy läpi lähetyksiä. Tämän vuoksi voi tuntua siltä, ettei ole riskiä jäädä kiinni. Vilppi tehtävissä saattaa myös tuntua hyväksyttävämmältä kuin esimerkiksi vilppi tentissä.
 
-## Miten eteenpäin?
+Vaikka kurssisivustolla on julkaistu kurssin pelisäännöt, osa opiskelijoista ei ole välttämättä huomannut niitä tai lukenut niitä huolellisesti. Niinpä kaikille opiskelijoille ei ole välttämättä selvää, mikä on vilppiä.
 
-Suuri vilpin määrä täytyy ottaa huomioon Tiran tulevaisuuden suunnittelussa. Onko mielekästä järjestää kurssia ilman valvottuja tenttejä?
+Tiran aiheet eivät kiinnosta kaikkia opiskelijoita tai tuntuvat liian vaikeilta, jolloin ei tunnu mielekkäältä käyttää aikaa kurssin tehtäviin. Opiskelijan esitiedot saattavat olla myös puutteelliset kurssin suorittamiseen.
 
-Kurssin tiedotusta voidaan parantaa niin, että kurssin pelisäännöt tulevat selvemmin esille.
+## Miten estää vilppiä?
 
-Vilppi ei ole ongelma vain Tirassa, vaan sitä tapahtuu myös muilla kursseilla. Tätä asiaa saattaisi olla syytä käsitellä yleisemmin tietojenkäsittelytieteen opetuksessa.
+Tehokas keino estää malliratkaisuihin liittyvää vilppiä on uudistaa jatkuvasti kurssin tehtäviä. Tämä on mahdollista mutta aiheuttaa paljon työtä kurssin opettajille. Lisäksi olisi mahdollista olla julkaisematta malliratkaisuja tehtäviin, mikä kuitenkin haittaisi oppimista.
+
+Tehtävien laadinnassa tulisi pyrkiä siihen, että tehtävien ratkaisuja ei löydy suoraan netistä. Netistä löytyy kuitenkin ratkaisuja todella moniin tehtäviin, ja on käytännössä vaikeaa laatia kurssille sopivia tehtäviä, joihin liittyen ei löydy tietoa netistä.
+
+Tiran formaattia olisi mahdollista muuttaa niin, että keskeisenä osana suorituksessa olisi valvottu tentti. Tehtäviin perustuva formaatti on kuitenkin tuntunut paremmalta, koska tenttitilanne ei tunnu soveltuvan hyvin mittaamaan kykyä suunnitella algoritmeja. Lisäksi valvotun tentin järjestäminen Avoimen yliopiston opiskelijoille olisi hankalaa.
+
+Kurssin tiedotusta on mahdollista parantaa niin, että kurssin pelisäännöt tulevat selvemmin esille. Esimerkiksi pelisäännöt voisivat tulla näkyviin ennen ensimmäisen tehtävän lähettämistä CSES:ssä, jotta kurssin opiskelijat huomaisivat ne todennäköisemmin.
+
+Kurssin materiaalia ja tehtäviä on mahdollista parantaa niin, että materiaali tukee paremmin tehtäviä. Kurssin materiaaliin on tulossa lisää esimerkkejä algoritmien suunnitteluun liittyen. Tämä toivottavasti vähentää tarvetta vilppiin. Tiran aihepiiriä ei kuitenkaan voi muuttaa ja on ymmärrettävää, ettei Tira tule koskaan olemaan kaikkien lempikurssi.
+
+## Miten hyvin vilppi huomataan?
+
+Vilppiä ei ole mahdollista huomata kaikissa tilanteissa. Esimerkiksi jos tehtävän ratkaisu on lyhyt koodi, on mahdollista, että opiskelija päätyy itsenäisesti samanlaiseen ratkaisuun kuin malliratkaisu tai kaksi opiskelijaa päätyy samanlaiseen ratkaisuun.
+
+Lisäksi on mahdollista, että joku toinen kurssin ulkopuolinen henkilö laatii ratkaisuja opiskelijan puolesta. Tällaista vilppiä ei yleensä pysty havaitsemaan, koska samanlaista koodia ei löydy muualta kurssin lähetyksistä.
+
+Havaitun vilpin lisäksi on luultavasti muutakin esimerkiksi yllä olevan kaltaista vilppiä, mutta on vaikeaa arvioida, miten paljon sitä esiintyy.
+
+## Esiintyykö vilppiä muilla kursseilla?
+
+Vilppiä tapahtuu Tiran lisäksi muillakin kursseilla. Vaihtelee kurssista ja toteutuskerrasta riippuen, paljonko käytetään aikaa opiskelijoiden ratkaisujen läpikäyntiin. Tämä on asia, josta olisi hyvä keskustella enemmänkin tietojenkäsittelytieteen opetuksessa ja erityisesti MOOC-kurssien järjestämiseen liittyen.
+
+## Miten ChatGPT vaikuttaa asiaan?
+
+Tiran ja muiden kurssien tulevaisuudessa täytyy ottaa myös huomioon, että ChatGPT pystyy antamaan ratkaisuja moniin ohjelmointitehtäviin.
+
+### Esimerkki ChatGPT:n käyttämisestä Tirassa
+
+Koetetaan ratkaista Tiran tehtävä [Robotin reitti](https://cses.fi/tira23k/task/2682) ChatGPT:n avulla. Tässä ChatGPT:lle annetaan suoraan CSES:stä kopioitu Tiran tehtävänanto.
+
+**Syöte ChatGPT:lle**
+
+Robotti on alussa ruudussa (0,0). Tämän jälkeen robotti liikkuu annetun liikesarjan mukaisesti askeleen kerrallaan. Liikesarja muodostuu merkeistä U (up), D (down), L (left) ja R (right). Monessako eri ruudussa robotti käy yhteensä?
+
+Voit olettaa, että liikesarjassa on enintään 105 komentoa.
+
+Toteuta tiedostoon robot.py funktio count, jolle annetaan robotin liikesarja ja joka ilmoittaa eri ruutujen määrän.
+
+**Vastaus ChatGPT:ltä**
+
+Tässä on toteutus Python-kielellä:
+
+```python
+def count(moves):
+    visited = set()
+    x, y = 0, 0
+    visited.add((x, y))
+    for move in moves:
+        if move == 'U':
+            y += 1
+        elif move == 'D':
+            y -= 1
+        elif move == 'L':
+            x -= 1
+        elif move == 'R':
+            x += 1
+        visited.add((x, y))
+    return len(visited)
+```
+
+Funktio count ottaa parametrinaan robotin liikesarjan moves. Se käyttää Pythonin sisäänrakennettua set-rakennetta pitääkseen kirjaa eri ruuduista, joissa robotti käy. Alussa robotti on ruudussa (0, 0), joten lisäämme tämän ruudun visited-joukkoon.
+
+Tämän jälkeen käymme läpi jokaisen liikkeen liikesarjasta moves. Jos liike on 'U', liikumme yhden askeleen ylöspäin muuttamalla y-koordinaattia yhdellä. 'D'-liike vastaavasti vähentää y-koordinaattia yhdellä, 'L' vähentää x-koordinaattia yhdellä ja 'R' lisää x-koordinaattia yhdellä. Tämän jälkeen lisäämme uuden ruudun visited-joukkoon.
+
+Lopuksi palautamme visited-joukon koon, joka kertoo eri ruutujen määrän, joissa robotti kävi.
+
+**Kommentti**
+
+ChatGPT:n antaman koodin voi lähettää suoraan CSES:ään, ja se läpäisee kaikki testit. Koodista ei ole mahdollista havaita, ettei se ole opiskelijan itse tuottama.
+
+Huomaa, että kopioidussa tehtävänannossa rajaksi tuli 105 eikä $$10^5$$, koska potenssimerkintä katosi kopioinnin yhteydessä. Tämä ei kuitenkaan haitannut tässä tapauksessa.
+
+ChatGPT:ltä voidaan pyytää vielä muutoksia koodiin:
+
+**Syöte ChatGPT:lle**
+
+Muuta koodia niin, että siinä on kommentit suomeksi sekä koodi käyttää while-silmukkaa for-silmukan sijasta.
+
+**Vastaus ChatGPT:ltä**
+
+Tässä on päivitetty toteutus, joka käyttää while-silmukkaa for-silmukan sijasta ja sisältää kommentit suomeksi:
+
+```python
+def count(moves):
+    visited = set()  # Alustetaan joukko, johon tallennetaan käydyt ruudut
+    x, y = 0, 0  # Alustetaan robotti ruutuun (0, 0)
+    visited.add((x, y))  # Lisätään lähtöruutu joukkoon
+    
+    i = 0  # Alustetaan liikesarjan indeksi
+    while i < len(moves):  # Käydään läpi liikesarja
+        move = moves[i]
+        
+        # Päivitetään robottia vastaavan liikkeen mukaisesti
+        if move == 'U':
+            y += 1
+        elif move == 'D':
+            y -= 1
+        elif move == 'L':
+            x -= 1
+        elif move == 'R':
+            x += 1
+            
+        visited.add((x, y))  # Lisätään uusi ruutu joukkoon
+        
+        i += 1  # Siirrytään seuraavaan liikkeeseen
+        
+    return len(visited)  # Palautetaan käytyjen ruutujen määrä
+```
+
+Kuten aiemmassa toteutuksessa, funktio count ottaa parametrinaan robotin liikesarjan moves ja käyttää joukkoa visited pitääkseen kirjaa eri ruuduista, joissa robotti käy.
+
+Sen sijaan, että käytettäisiin for-silmukkaa liikesarjan läpikäymiseen, tässä käytetään while-silmukkaa. Aluksi asetetaan muuttuja i arvoon 0, joka toimii liikesarjan indeksinä. Silmukassa käydään läpi liikesarja, kunnes i saavuttaa liikesarjan pituuden.
+
+Jokaisessa silmukan läpikäynnissä otetaan moves-listalta i:n kohdalta liike move. Tämän jälkeen päivitetään robottia vastaavan liikkeen mukaisesti, lisätään uusi ruutu visited-joukkoon ja siirrytään seuraavaan liikkeeseen kasvattamalla indeksiä i yhdellä.
+
+Lopuksi palautetaan visited-joukon koko, joka kertoo eri ruutujen määrän, joissa robotti kävi.
+
+**Kommentti**
+
+Tästä näkee, että ChatGPT soveltuu hyvin myös olemassa olevan koodin muokkaamiseen. Myös muokattu versio toimii suoraan CSES:ssä ja läpäisee kaikki testit.
