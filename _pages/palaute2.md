@@ -5,8 +5,6 @@ hidden: true
 
 # Kurssin II-osan palaute
 
-# Palautteen yhteenveto
-
 Kurssipalautteen antoi 105 opiskelijaa.
 
 Tira uudistuu ensi syksynä ja kurssia kehitetään palautteen perusteella. Tavoitteena on luoda uusi MOOC-materiaali, joka tukee paremmin kurssin suorittamista. Verrattuna nykyiseen materiaaliin tulee enemmän havainnollistavia esimerkkejä sekä neuvoja algoritmien suunnittelemiseen.
