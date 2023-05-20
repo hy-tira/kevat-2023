@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>
+    
+    Binääripuun piirtäminen (Java) - Tietorakenteet ja algoritmit kevät 2023
+    
+  </title>
+  <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        CommonHTML: {
+          scale: 87
+        }
+      });
+      </script>
+  <script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  <link rel='stylesheet' type='text/css' media='screen' href=/kevat-2023/assets/css/main.css>
+  <link rel='stylesheet' type='text/css' media='screen' href=/kevat-2023/assets/css/syntax.css>
+
+  <script src=/kevat-2023/assets/js/main.js></script>
+
+</head>
+
+
+<body id="chapter">
+    
+<nav class="no-nav" id="side-nav" >
+    <button id="hide" onclick="hideSideNav()"> &#x2715;</button>
+    <button id="show" onclick="showSideNav()"> </button>
+    <h2>Tietorakenteet ja algoritmit kevät 2023</h2>
+    
+    <ol>
+
+        <li class="side-nav-obj" id="indexnav"><a href=/kevat-2023/index>Etusivu </a></li>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <li class="side-nav-obj" id="Materiaalinav"><a href="/kevat-2023/pages/materiaali.html">Materiaali</a></li>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <li class="side-nav-obj" id="Tehtävätnav"><a href="/kevat-2023/pages/tehtavat.html">Tehtävät</a></li>
+        
+        
+        
+        <li class="side-nav-obj" id="Tulokset ja palautenav"><a href="/kevat-2023/pages/tulokset-palaute.html">Tulokset ja palaute</a></li>
+        
+        
+        
+        
+        
+        
+        
+        
+        <br>
+        
+    </ol>
+</nav>
+    <div class="page-content">
+        <div class="content">
+    <div class="table-of-content" id="tof" style="display: none;">
+    <ul>
+        
+    </ul>
+</div>
+
+    <h1 id="binääripuun-piirtäminen-java">Binääripuun piirtäminen (Java)</h1>
+
+<p>Binääripuun rakenteen hahmottaminen on vähintäänkin vaikeaa katsomalla koodia, joka muodostaa binääripuun.</p>
+
+<p>Apuun tulee seuraava koodi, joka piirtää binääripuun AWT- ja Swing-kirjastojen avulla. Kuten muutkin binääripuuhun liittyvät asiat, piirtäminen onnistuu kätevästi rekursion avulla.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DrawTree</span> <span class="kd">extends</span> <span class="nc">JFrame</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">800</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">500</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">DrawTree</span><span class="o">()</span> <span class="o">{</span>
+         <span class="n">setSize</span><span class="o">(</span><span class="n">width</span><span class="o">,</span><span class="n">height</span><span class="o">);</span>
+         <span class="n">setDefaultCloseOperation</span><span class="o">(</span><span class="nc">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
+         <span class="n">setResizable</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+         <span class="n">setLocationRelativeTo</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+         <span class="n">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">new</span> <span class="nf">DrawTree</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kt">int</span> <span class="nf">count</span><span class="o">(</span><span class="nc">Node</span> <span class="n">node</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">node</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">return</span> <span class="nf">count</span><span class="o">(</span><span class="n">node</span><span class="o">.</span><span class="na">left</span><span class="o">)+</span><span class="n">count</span><span class="o">(</span><span class="n">node</span><span class="o">.</span><span class="na">right</span><span class="o">)+</span><span class="mi">1</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kt">void</span> <span class="nf">drawTree</span><span class="o">(</span><span class="nc">Node</span> <span class="n">node</span><span class="o">,</span> <span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">,</span> <span class="nc">Graphics</span> <span class="n">g</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">node</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="k">return</span><span class="o">;</span>
+        <span class="n">g</span><span class="o">.</span><span class="na">fillOval</span><span class="o">(</span><span class="n">x</span><span class="o">-</span><span class="mi">5</span><span class="o">,</span><span class="n">y</span><span class="o">-</span><span class="mi">5</span><span class="o">,</span><span class="mi">10</span><span class="o">,</span><span class="mi">10</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">space</span><span class="o">,</span> <span class="n">newX</span><span class="o">,</span> <span class="n">newY</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">node</span><span class="o">.</span><span class="na">left</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">space</span> <span class="o">=</span> <span class="n">count</span><span class="o">(</span><span class="n">node</span><span class="o">.</span><span class="na">left</span><span class="o">.</span><span class="na">right</span><span class="o">);</span>
+            <span class="n">newX</span> <span class="o">=</span> <span class="n">x</span><span class="o">-(</span><span class="n">space</span><span class="o">+</span><span class="mi">1</span><span class="o">)*</span><span class="mi">30</span><span class="o">;</span> <span class="n">newY</span> <span class="o">=</span> <span class="n">y</span><span class="o">+</span><span class="mi">40</span><span class="o">;</span>
+            <span class="n">g</span><span class="o">.</span><span class="na">drawLine</span><span class="o">(</span><span class="n">x</span><span class="o">,</span><span class="n">y</span><span class="o">,</span><span class="n">newX</span><span class="o">,</span><span class="n">newY</span><span class="o">);</span>
+            <span class="n">drawTree</span><span class="o">(</span><span class="n">node</span><span class="o">.</span><span class="na">left</span><span class="o">,</span><span class="n">newX</span><span class="o">,</span><span class="n">newY</span><span class="o">,</span><span class="n">g</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">node</span><span class="o">.</span><span class="na">right</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">space</span> <span class="o">=</span> <span class="n">count</span><span class="o">(</span><span class="n">node</span><span class="o">.</span><span class="na">right</span><span class="o">.</span><span class="na">left</span><span class="o">);</span>
+            <span class="n">newX</span> <span class="o">=</span> <span class="n">x</span><span class="o">+(</span><span class="n">space</span><span class="o">+</span><span class="mi">1</span><span class="o">)*</span><span class="mi">30</span><span class="o">;</span> <span class="n">newY</span> <span class="o">=</span> <span class="n">y</span><span class="o">+</span><span class="mi">40</span><span class="o">;</span>
+            <span class="n">g</span><span class="o">.</span><span class="na">drawLine</span><span class="o">(</span><span class="n">x</span><span class="o">,</span><span class="n">y</span><span class="o">,</span><span class="n">newX</span><span class="o">,</span><span class="n">newY</span><span class="o">);</span>
+            <span class="n">drawTree</span><span class="o">(</span><span class="n">node</span><span class="o">.</span><span class="na">right</span><span class="o">,</span><span class="n">newX</span><span class="o">,</span><span class="n">newY</span><span class="o">,</span><span class="n">g</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">paint</span><span class="o">(</span><span class="nc">Graphics</span> <span class="n">g</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// tässä on binääripuu, joka halutaan piirtää</span>
+        <span class="nc">Node</span> <span class="n">tree</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Node</span><span class="o">(</span>
+            <span class="k">new</span> <span class="nf">Node</span><span class="o">(</span><span class="k">new</span> <span class="nc">Node</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span><span class="kc">null</span><span class="o">),</span><span class="k">new</span> <span class="nc">Node</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span><span class="kc">null</span><span class="o">)),</span>
+            <span class="k">new</span> <span class="nf">Node</span><span class="o">(</span><span class="k">new</span> <span class="nc">Node</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span><span class="kc">null</span><span class="o">),</span><span class="k">new</span> <span class="nc">Node</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span><span class="kc">null</span><span class="o">))</span>
+        <span class="o">);</span>
+        <span class="n">g</span><span class="o">.</span><span class="na">setColor</span><span class="o">(</span><span class="nc">Color</span><span class="o">.</span><span class="na">BLACK</span><span class="o">);</span>
+        <span class="n">drawTree</span><span class="o">(</span><span class="n">tree</span><span class="o">,</span><span class="n">width</span><span class="o">/</span><span class="mi">2</span><span class="o">,</span><span class="mi">50</span><span class="o">,</span><span class="n">g</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+</div>
+        <div class="footer">
+    <img src=/kevat-2023/assets/img/HY_logo.png>
+    </div>
+    </div>
+</body>
+
+</html>

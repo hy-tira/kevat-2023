@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>
+    
+    Sanojen etsiminen Pythonilla - Tietorakenteet ja algoritmit kevät 2023
+    
+  </title>
+  <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        CommonHTML: {
+          scale: 87
+        }
+      });
+      </script>
+  <script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  <link rel='stylesheet' type='text/css' media='screen' href=/kevat-2023/assets/css/main.css>
+  <link rel='stylesheet' type='text/css' media='screen' href=/kevat-2023/assets/css/syntax.css>
+
+  <script src=/kevat-2023/assets/js/main.js></script>
+
+</head>
+
+
+<body id="chapter">
+    
+<nav class="no-nav" id="side-nav" >
+    <button id="hide" onclick="hideSideNav()"> &#x2715;</button>
+    <button id="show" onclick="showSideNav()"> </button>
+    <h2>Tietorakenteet ja algoritmit kevät 2023</h2>
+    
+    <ol>
+
+        <li class="side-nav-obj" id="indexnav"><a href=/kevat-2023/index>Etusivu </a></li>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <li class="side-nav-obj" id="Materiaalinav"><a href="/kevat-2023/pages/materiaali.html">Materiaali</a></li>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <li class="side-nav-obj" id="Tehtävätnav"><a href="/kevat-2023/pages/tehtavat.html">Tehtävät</a></li>
+        
+        
+        
+        <li class="side-nav-obj" id="Tulokset ja palautenav"><a href="/kevat-2023/pages/tulokset-palaute.html">Tulokset ja palaute</a></li>
+        
+        
+        
+        
+        
+        
+        
+        
+        <br>
+        
+    </ol>
+</nav>
+    <div class="page-content">
+        <div class="content">
+    <div class="table-of-content" id="tof" style="display: none;">
+    <ul>
+        
+    </ul>
+</div>
+
+    <h1 id="sanojen-etsiminen-pythonilla">Sanojen etsiminen Pythonilla</h1>
+
+<p>Kurssin I-osan aloitusluennolla käytiin läpi esimerkki, jossa etsitään suomen ja englannin kielen yhteisiä sanoja. Käytössä ovat seuraavat aineistot:</p>
+
+<ul>
+  <li><a href="../assets/suomi.txt">suomen kielen sanalista</a> (91591 sanaa)</li>
+  <li><a href="../assets/englanti.txt">englannin kielen sanalista</a> (109582 sanaa)</li>
+</ul>
+
+<p>Seuraava ohjelma lukee sanalistat listoihin ja etsii sitten yhteiset sanat. Silmukka käy läpi kaikki suomen kielen sanat ja tulostaa jokaisen sanan, joka on myös englannin kielen sana.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="n">words_finnish</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">"suomi.txt"</span><span class="p">).</span><span class="n">read</span><span class="p">().</span><span class="n">splitlines</span><span class="p">()</span>
+<span class="n">words_english</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">"englanti.txt"</span><span class="p">).</span><span class="n">read</span><span class="p">().</span><span class="n">splitlines</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words_finnish</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words_english</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Ohjelman suoritus näyttää seuraavalta:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$ python3 sanat.py
+abo
+adagio
+adonis
+aerobic
+afrikaans
+afro
+agar
+agenda
+ah
+ai
+...
+</code></pre></div></div>
+
+<p>Suoritetaan ohjelma vielä <code class="language-html highlighter-rouge">time</code>-komennon kautta, jotta saamme tietää sen suoritusajan:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$ time python3 sanat.py
+abo
+adagio
+adonis
+...
+zombie
+zucchini
+zulu
+
+
+real	1m46.488s
+user	1m46.468s
+sys	0m0.012s
+</code></pre></div></div>
+
+<p>Sanojen etsiminen vei siis aikaa 1 minuutin ja 46 sekuntia. Huomaa, että luennolla tuli eri aika, koska ohjelma suoritettiin eri koneessa ja samaan aikaan oli käynnissä Zoom.</p>
+
+<p>Ohjelman pullonkaula on seuraava rivi, joka tarkastaa, onko sana englannin kielen sana:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="syntax"><code>    <span class="k">if</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words_english</span><span class="p">:</span>
+</code></pre></div></div>
+
+<p>Tämä tarkastus on hidas, koska englannin kielen sanat ovat listassa, josta on hidasta etsiä alkioita. Tehokkaampi tapa on muuttaa koodia niin, että käytössä onkin hajautustaulu:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="n">words_english</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">"englanti.txt"</span><span class="p">).</span><span class="n">read</span><span class="p">().</span><span class="n">splitlines</span><span class="p">())</span>
+</code></pre></div></div>
+
+<p>Tämän muutoksen seurauksena ohjelma toimii hyvin nopeasti:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$ time python3 sanat.py
+abo
+adagio
+adonis
+...
+zombie
+zucchini
+zulu
+
+real	0m0.081s
+user	0m0.069s
+sys	0m0.012s
+</code></pre></div></div>
+
+<p>Tämä on kurssin tavoite: haluamme oppia käyttämään tietorakenteita ja algoritmeja niin, että saamme aikaan tehokkaita ohjelmia.</p>
+
+</div>
+        <div class="footer">
+    <img src=/kevat-2023/assets/img/HY_logo.png>
+    </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>
+    
+    Vilppiä Tirassa - Tietorakenteet ja algoritmit kevät 2023
+    
+  </title>
+  <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        CommonHTML: {
+          scale: 87
+        }
+      });
+      </script>
+  <script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  <link rel='stylesheet' type='text/css' media='screen' href=/kevat-2023/assets/css/main.css>
+  <link rel='stylesheet' type='text/css' media='screen' href=/kevat-2023/assets/css/syntax.css>
+
+  <script src=/kevat-2023/assets/js/main.js></script>
+
+</head>
+
+
+<body id="chapter">
+    
+<nav class="no-nav" id="side-nav" >
+    <button id="hide" onclick="hideSideNav()"> &#x2715;</button>
+    <button id="show" onclick="showSideNav()"> </button>
+    <h2>Tietorakenteet ja algoritmit kevät 2023</h2>
+    
+    <ol>
+
+        <li class="side-nav-obj" id="indexnav"><a href=/kevat-2023/index>Etusivu </a></li>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <li class="side-nav-obj" id="Materiaalinav"><a href="/kevat-2023/pages/materiaali.html">Materiaali</a></li>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <li class="side-nav-obj" id="Tehtävätnav"><a href="/kevat-2023/pages/tehtavat.html">Tehtävät</a></li>
+        
+        
+        
+        <li class="side-nav-obj" id="Tulokset ja palautenav"><a href="/kevat-2023/pages/tulokset-palaute.html">Tulokset ja palaute</a></li>
+        
+        
+        
+        
+        
+        
+        
+        
+        <br>
+        
+    </ol>
+</nav>
+    <div class="page-content">
+        <div class="content">
+    <div class="table-of-content" id="tof" style="display: none;">
+    <ul>
+        
+    </ul>
+</div>
+
+    <h1 id="vilppiä-tirassa">Vilppiä Tirassa</h1>
+
+<p>Kevään 2023 Tiran I-osan arvostelussa huomattiin, että monet kurssin opiskelijat ovat lähettäneet tehtäviin ratkaisuja, jotka eivät vaikuta itsenäisesti laadituilta.
+Tämä raportti kuvaa, millaista vilppiä Tirassa epäillään ja miten laajalta ilmiö vaikuttaa.</p>
+
+<h2 id="taustaa">Taustaa</h2>
+
+<p>Kevään 2023 Tira on järjestetty MOOC-kurssina, jossa arvostelu perustuu kurssin tehtäviin.
+Tehtävät palautetaan CSES-järjestelmään, joka arvostelee ne automaattisesti.
+Kurssilla ei ole tenttiä, vaan arvostelu perustuu pelkästään tehtäviin.</p>
+
+<p>Kurssisivustolla on julkaistu <a href="pelisaannot.html">kurssin pelisäännöt</a>,
+jotka määrittävät, että kurssilla palautettavat ratkaisut tulee tuottaa itsenäisesti.
+Tehtävistä saa keskustella muiden kanssa ja tehtävissä saa hyödyntää nettiä,
+mutta ratkaisut tulee kirjoittaa alusta alkaen itse.
+Jos ratkaisu perustuu netistä löydettyyn ideaan, sen yhteydessä tulee ilmoittaa lähde.</p>
+
+<p>Tirassa on havaittu edellisinä vuosina jonkin verran vilppiä, mutta tänä keväänä ilmiö vaikuttaa aiempaa laajemmalta.</p>
+
+<h2 id="paljonko-vilppiä-esiintyy">Paljonko vilppiä esiintyy?</h2>
+
+<p>Kevään 2023 Tiran I-osaan osallistui 366 opiskelijaa. Kurssin arvostelussa havaittiin 63 opiskelijaa,
+joita epäillään vilpistä. Niinpä 17 % kurssin opiskelijoista epäillään vilpistä.</p>
+
+<p>Näissä epäilyissä opiskelija on lähettänyt ratkaisun, joka selkeästi ei vaikuta itsenäisesti laaditulta,
+joten kyse on luultavasti todellisesta vilpistä.
+On kuitenkin mahdollista, että epäily osoittautuu aiheettomaksi.</p>
+
+<h2 id="miten-vilppiä-havaitaan">Miten vilppiä havaitaan?</h2>
+
+<p>Vilppiä voidaan havaita etsimällä ratkaisuja, jotka eivät vaikuta itsenäisesti laadituilta. Yleisiä tilanteita ovat, että opiskelijan ratkaisu muistuttaa malliratkaisua tai kaksi opiskelijaa ovat lähettäneet samanlaisen ratkaisun.</p>
+
+<p>Ratkaisujen vertailussa täytyy ottaa huomioon, että ratkaisujen välillä saattaa olla pieniä eroja. Esimerkiksi koodin muuttujien nimien vaihtaminen vaikuttaa olevan yleinen tapa koettaa kätkeä vilppiä. Usein koodien rakenteessa on muitakin pieniä eroja.</p>
+
+<p>Vilppiä voidaan havaita myös siitä, että opiskelija on lähettänyt ratkaisuja poikkeuksellisella tavalla. Esimerkiksi opiskelija on saanut paljon tehtäviä ensimmäisellä yrityksellä oikein tai eri tehtävien ratkaisujen lähetysajat ovat lähellä toisiaan.</p>
+
+<h3 id="esimerkki-vilppi-malliratkaisun-avulla">Esimerkki: vilppi malliratkaisun avulla</h3>
+
+<p>Tarkastellaan Tiran tehtävää <a href="https://cses.fi/tira23k/task/2717">Minimikeko</a>, jonka malliratkaisu on seuraava:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="k">def</span> <span class="nf">count</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">2</span><span class="o">**</span><span class="mi">8</span><span class="p">)</span> <span class="o">*</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">2</span><span class="o">**</span><span class="mi">8</span><span class="p">)</span> <span class="o">*</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">size</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">size</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">size</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">path</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">path</span><span class="p">[</span><span class="n">i</span><span class="o">//</span><span class="mi">2</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">size</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="o">-</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">path</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">k</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">result</span>
+</code></pre></div></div>
+
+<p>Seuraavassa on kolme esimerkkiä opiskelijoiden ratkaisuista, joita epäillään vilpistä.</p>
+
+<p><strong>Ratkaisu 1</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="k">def</span> <span class="nf">count</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="n">koko</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">2</span><span class="o">**</span><span class="mi">8</span><span class="p">)</span> <span class="o">*</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">polku</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">2</span><span class="o">**</span><span class="mi">8</span><span class="p">)</span> <span class="o">*</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">vastaus</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">koko</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">koko</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">koko</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">polku</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">polku</span><span class="p">[</span><span class="n">i</span><span class="o">//</span><span class="mi">2</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">koko</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="o">-</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">polku</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">k</span><span class="p">:</span>
+            <span class="n">vastaus</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">vastaus</span>
+</code></pre></div></div>
+
+<p>Tämä koodi vastaa muuten täysin malliratkaisua, mutta jokaisen muuttujan nimi on käännetty englannista suomeksi.</p>
+
+<p><strong>Ratkaisu 2</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="k">def</span> <span class="nf">count</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+ 
+    <span class="n">luvut</span> <span class="o">=</span> <span class="n">n</span>
+    <span class="n">kKpl</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">koko</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">8</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">8</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+ 
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">luvut</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        
+        <span class="n">koko</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">koko</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">koko</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+        
+        
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+ 
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">luvut</span> <span class="o">+</span><span class="mi">1</span><span class="p">:</span>
+        <span class="n">indeksi</span> <span class="o">=</span> <span class="n">i</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="nb">list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">[</span><span class="n">indeksi</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+ 
+        <span class="k">if</span> <span class="n">koko</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">luvut</span><span class="o">-</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">k</span><span class="p">:</span>
+                <span class="n">kKpl</span> <span class="o">+=</span> <span class="mi">1</span>
+ 
+        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+ 
+    <span class="k">return</span> <span class="n">kKpl</span>
+</code></pre></div></div>
+
+<p>Tässä vaikuttaa, että malliratkaisuun on tehty useita pieniä muutoksia.
+Muuttujien nimien vaihtamisen lisäksi rivien järjestystä on muutettu, for-silmukka on korvattu while-silmukalla ja
+if-rakenne on jaettu kahteen osaan. Koodiin on myös lisätty rivinvaihtoja.</p>
+
+<p><strong>Ratkaisu 3</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="k">def</span> <span class="nf">count</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="n">kohtia</span><span class="o">=</span><span class="mi">0</span>
+    <span class="n">lista</span><span class="o">=</span><span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+        <span class="n">lista</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">apu</span><span class="o">=</span><span class="n">lista</span><span class="p">[:]</span>
+    <span class="c1">#käydään listaa läpi vikasta ekaan jäseneen
+</span>    <span class="c1">#solmun vas lapsi kohdassa 2k ja oik lapsi 2k+1
+</span>    <span class="c1">#solmun vanhempi on k/2 kohdassa
+</span>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">lista</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">lista</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">lista</span><span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span>
+ 
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">apu</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">apu</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="o">/</span><span class="mi">2</span><span class="p">)]</span><span class="o">+</span><span class="mi">1</span>
+        <span class="k">if</span> <span class="n">n</span><span class="o">-</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="o">&gt;=</span><span class="n">lista</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">and</span> <span class="n">k</span><span class="o">&gt;=</span><span class="n">apu</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+            <span class="n">kohtia</span><span class="o">+=</span><span class="mi">1</span>
+    <span class="k">return</span> <span class="n">kohtia</span>
+</code></pre></div></div>
+
+<p>Myös tässä vaikuttaa, että malliratkaisuun on tehty joukko pieniä muutoksia.
+Suurin ero malliratkaisuun verrattuna on, että listat luodaan eri tavalla.
+Koodissa on myös kommentti, joka ei kuitenkaan selitä juurikaan
+ratkaisun ideaa.</p>
+
+<h2 id="mitä-vilpistä-seuraa">Mitä vilpistä seuraa?</h2>
+
+<p>Kurssin luennoija ottaa yhteyttä vilpistä epäiltyyn opiskelijaan ja pyytää häneltä selitystä asiaan.
+Jos kyse todella on vilpistä, opiskelija menettää pisteet tehtävästä tai tehtävistä ja asiasta ilmoitetaan koulutusohjelman johtajalle.</p>
+
+<h2 id="miksi-vilppiä-esiintyy">Miksi vilppiä esiintyy?</h2>
+
+<p>Osalla opiskelijoista on käytössä tehtävien malliratkaisuja aiemmilta kursseilta. Tirassa ei ole mahdollista laatia uusia tehtäviä joka kurssille, ja tähän asti käytäntönä on ollut julkaista malliratkaisut deadlinen jälkeen. Lisäksi osaan tehtävistä voi löytää valmiita ratkaisuja netistä.</p>
+
+<p>Kun kurssin tehtävät arvioidaan automaattisesti, saattaa tulla vaikutelma, ettei kukaan ihminen käy läpi lähetyksiä. Tämän vuoksi voi tuntua siltä, ettei ole riskiä jäädä kiinni. Vilppi tehtävissä saattaa myös tuntua hyväksyttävämmältä kuin esimerkiksi vilppi tentissä.</p>
+
+<p>Vaikka kurssisivustolla on julkaistu kurssin pelisäännöt, osa opiskelijoista ei ole välttämättä huomannut niitä tai lukenut niitä huolellisesti. Niinpä kaikille opiskelijoille ei ole välttämättä selvää, mikä on vilppiä.</p>
+
+<p>Tiran aiheet eivät kiinnosta kaikkia opiskelijoita tai tuntuvat liian vaikeilta, jolloin voi olla pienempi kynnys vilppiin. Opiskelijan esitiedot saattavat olla myös puutteelliset kurssin suorittamiseen.</p>
+
+<h2 id="miten-estää-vilppiä">Miten estää vilppiä?</h2>
+
+<p>Tehokas keino estää malliratkaisuihin liittyvää vilppiä on uudistaa jatkuvasti kurssin tehtäviä. Tämä on mahdollista mutta aiheuttaa paljon työtä kurssin opettajille. Lisäksi olisi mahdollista olla julkaisematta malliratkaisuja tehtäviin, mikä kuitenkin haittaisi oppimista.</p>
+
+<p>Tehtävien laadinnassa tulisi pyrkiä siihen, että tehtävien ratkaisuja ei löydy suoraan netistä. Netistä löytyy kuitenkin ratkaisuja todella moniin tehtäviin, ja on käytännössä vaikeaa laatia kurssille sopivia tehtäviä, joihin liittyen ei löydy tietoa netistä.</p>
+
+<p>Tiran formaattia olisi mahdollista muuttaa niin, että keskeisenä osana suorituksessa olisi valvottu tentti. Tehtäviin perustuva formaatti on kuitenkin tuntunut paremmalta, koska tenttitilanne ei tunnu soveltuvan hyvin mittaamaan kykyä laatia algoritmeja. Lisäksi valvotun tentin järjestäminen Avoimen yliopiston opiskelijoille olisi hankalaa.</p>
+
+<p>Kurssin tiedotusta on mahdollista parantaa niin, että kurssin pelisäännöt tulevat selvemmin esille. Esimerkiksi pelisäännöt voisivat tulla näkyviin ennen ensimmäisen tehtävän lähettämistä CSES:ssä, jotta kurssin opiskelijat huomaisivat ne todennäköisemmin.</p>
+
+<p>Kurssin materiaalia ja tehtäviä on mahdollista parantaa niin, että materiaali tukee paremmin tehtäviä. Kurssin materiaaliin on tulossa lisää esimerkkejä algoritmien suunnitteluun liittyen, mikä toivottavasti vähentää tarvetta vilppiin. Tiran aihepiiriä ei kuitenkaan voi muuttaa ja on ymmärrettävää, ettei Tira tule koskaan olemaan kaikkien lempikurssi.</p>
+
+<h2 id="miten-hyvin-vilppi-huomataan">Miten hyvin vilppi huomataan?</h2>
+
+<p>Vilppiä ei ole mahdollista huomata kaikissa tilanteissa. Esimerkiksi jos tehtävän ratkaisu on lyhyt koodi, on mahdollista, että opiskelija päätyy itsenäisesti samanlaiseen ratkaisuun kuin malliratkaisu tai kaksi opiskelijaa päätyy samanlaiseen ratkaisuun.</p>
+
+<p>Lisäksi on mahdollista, että joku toinen kurssin ulkopuolinen henkilö laatii ratkaisuja opiskelijan puolesta. Tällaista vilppiä ei yleensä pysty havaitsemaan, koska samanlaista koodia ei löydy muualta kurssin lähetyksistä.</p>
+
+<p>Havaitun vilpin lisäksi on luultavasti muutakin esimerkiksi yllä olevan kaltaista vilppiä, mutta on vaikeaa arvioida, miten paljon sitä esiintyy.</p>
+
+<h2 id="tapahtuuko-vilppiä-muilla-kursseilla">Tapahtuuko vilppiä muilla kursseilla?</h2>
+
+<p>Vilppiä tapahtuu Tiran lisäksi muillakin kursseilla. Vaihtelee kurssista ja toteutuskerrasta riippuen, paljonko käytetään aikaa opiskelijoiden ratkaisujen läpikäyntiin. Tämä on asia, josta olisi hyvä keskustella enemmänkin tietojenkäsittelytieteen opetuksessa ja erityisesti MOOC-kurssien järjestämiseen liittyen.</p>
+
+<h2 id="miten-uudet-tekoälyt-vaikuttavat-asiaan">Miten uudet tekoälyt vaikuttavat asiaan?</h2>
+
+<p>Tiran ja muiden kurssien tulevaisuudessa täytyy ottaa myös huomioon, että uudet tekoälyt (kuten ChatGPT) pystyvät antamaan ratkaisuja moniin ohjelmointitehtäviin.</p>
+
+<h3 id="esimerkki-chatgptn-käyttämisestä-tirassa">Esimerkki ChatGPT:n käyttämisestä Tirassa</h3>
+
+<p>Koetetaan ratkaista Tiran tehtävä <a href="https://cses.fi/tira23k/task/2682">Robotin reitti</a> ChatGPT:n avulla. Tässä ChatGPT:lle annetaan suoraan CSES:stä kopioitu Tiran tehtävänanto.</p>
+
+<p><strong>Syöte ChatGPT:lle</strong></p>
+
+<p>Robotti on alussa ruudussa (0,0). Tämän jälkeen robotti liikkuu annetun liikesarjan mukaisesti askeleen kerrallaan. Liikesarja muodostuu merkeistä U (up), D (down), L (left) ja R (right). Monessako eri ruudussa robotti käy yhteensä?</p>
+
+<p>Voit olettaa, että liikesarjassa on enintään 105 komentoa.</p>
+
+<p>Toteuta tiedostoon robot.py funktio count, jolle annetaan robotin liikesarja ja joka ilmoittaa eri ruutujen määrän.</p>
+
+<p><strong>Vastaus ChatGPT:ltä</strong></p>
+
+<p>Tässä on toteutus Python-kielellä:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="k">def</span> <span class="nf">count</span><span class="p">(</span><span class="n">moves</span><span class="p">):</span>
+    <span class="n">visited</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="n">visited</span><span class="p">.</span><span class="n">add</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">move</span> <span class="ow">in</span> <span class="n">moves</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">move</span> <span class="o">==</span> <span class="s">'U'</span><span class="p">:</span>
+            <span class="n">y</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">elif</span> <span class="n">move</span> <span class="o">==</span> <span class="s">'D'</span><span class="p">:</span>
+            <span class="n">y</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">elif</span> <span class="n">move</span> <span class="o">==</span> <span class="s">'L'</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">elif</span> <span class="n">move</span> <span class="o">==</span> <span class="s">'R'</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">visited</span><span class="p">.</span><span class="n">add</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">visited</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Funktio count ottaa parametrinaan robotin liikesarjan moves. Se käyttää Pythonin sisäänrakennettua set-rakennetta pitääkseen kirjaa eri ruuduista, joissa robotti käy. Alussa robotti on ruudussa (0, 0), joten lisäämme tämän ruudun visited-joukkoon.</p>
+
+<p>Tämän jälkeen käymme läpi jokaisen liikkeen liikesarjasta moves. Jos liike on ‘U’, liikumme yhden askeleen ylöspäin muuttamalla y-koordinaattia yhdellä. ‘D’-liike vastaavasti vähentää y-koordinaattia yhdellä, ‘L’ vähentää x-koordinaattia yhdellä ja ‘R’ lisää x-koordinaattia yhdellä. Tämän jälkeen lisäämme uuden ruudun visited-joukkoon.</p>
+
+<p>Lopuksi palautamme visited-joukon koon, joka kertoo eri ruutujen määrän, joissa robotti kävi.</p>
+
+<p><strong>Kommentti</strong></p>
+
+<p>ChatGPT:n antaman koodin voi lähettää suoraan CSES:ään, ja se läpäisee kaikki testit. Koodista ei ole mahdollista havaita, ettei se ole opiskelijan itse tuottama.</p>
+
+<p>Huomaa, että kopioidussa tehtävänannossa rajaksi tuli 105 eikä \(10^5\), koska potenssimerkintä katosi kopioinnin yhteydessä. Tämä ei kuitenkaan haitannut tässä tapauksessa.</p>
+
+<p>ChatGPT:ltä voidaan pyytää vielä muutoksia koodiin:</p>
+
+<p><strong>Syöte ChatGPT:lle</strong></p>
+
+<p>Muuta koodia niin, että siinä on kommentit suomeksi sekä koodi käyttää while-silmukkaa for-silmukan sijasta.</p>
+
+<p><strong>Vastaus ChatGPT:ltä</strong></p>
+
+<p>Tässä on päivitetty toteutus, joka käyttää while-silmukkaa for-silmukan sijasta ja sisältää kommentit suomeksi:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="k">def</span> <span class="nf">count</span><span class="p">(</span><span class="n">moves</span><span class="p">):</span>
+    <span class="n">visited</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>  <span class="c1"># Alustetaan joukko, johon tallennetaan käydyt ruudut
+</span>    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>  <span class="c1"># Alustetaan robotti ruutuun (0, 0)
+</span>    <span class="n">visited</span><span class="p">.</span><span class="n">add</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>  <span class="c1"># Lisätään lähtöruutu joukkoon
+</span>    
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Alustetaan liikesarjan indeksi
+</span>    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">moves</span><span class="p">):</span>  <span class="c1"># Käydään läpi liikesarja
+</span>        <span class="n">move</span> <span class="o">=</span> <span class="n">moves</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        
+        <span class="c1"># Päivitetään robottia vastaavan liikkeen mukaisesti
+</span>        <span class="k">if</span> <span class="n">move</span> <span class="o">==</span> <span class="s">'U'</span><span class="p">:</span>
+            <span class="n">y</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">elif</span> <span class="n">move</span> <span class="o">==</span> <span class="s">'D'</span><span class="p">:</span>
+            <span class="n">y</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">elif</span> <span class="n">move</span> <span class="o">==</span> <span class="s">'L'</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">elif</span> <span class="n">move</span> <span class="o">==</span> <span class="s">'R'</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
+            
+        <span class="n">visited</span><span class="p">.</span><span class="n">add</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>  <span class="c1"># Lisätään uusi ruutu joukkoon
+</span>        
+        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c1"># Siirrytään seuraavaan liikkeeseen
+</span>        
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">visited</span><span class="p">)</span>  <span class="c1"># Palautetaan käytyjen ruutujen määrä
+</span></code></pre></div></div>
+
+<p>Kuten aiemmassa toteutuksessa, funktio count ottaa parametrinaan robotin liikesarjan moves ja käyttää joukkoa visited pitääkseen kirjaa eri ruuduista, joissa robotti käy.</p>
+
+<p>Sen sijaan, että käytettäisiin for-silmukkaa liikesarjan läpikäymiseen, tässä käytetään while-silmukkaa. Aluksi asetetaan muuttuja i arvoon 0, joka toimii liikesarjan indeksinä. Silmukassa käydään läpi liikesarja, kunnes i saavuttaa liikesarjan pituuden.</p>
+
+<p>Jokaisessa silmukan läpikäynnissä otetaan moves-listalta i:n kohdalta liike move. Tämän jälkeen päivitetään robottia vastaavan liikkeen mukaisesti, lisätään uusi ruutu visited-joukkoon ja siirrytään seuraavaan liikkeeseen kasvattamalla indeksiä i yhdellä.</p>
+
+<p>Lopuksi palautetaan visited-joukon koko, joka kertoo eri ruutujen määrän, joissa robotti kävi.</p>
+
+<p><strong>Kommentti</strong></p>
+
+<p>Tästä näkee, että ChatGPT soveltuu hyvin myös olemassa olevan koodin muokkaamiseen. Myös muokattu versio toimii suoraan CSES:ssä ja läpäisee kaikki testit.</p>
+
+</div>
+        <div class="footer">
+    <img src=/kevat-2023/assets/img/HY_logo.png>
+    </div>
+    </div>
+</body>
+
+</html>

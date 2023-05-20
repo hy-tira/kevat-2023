@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>
+    
+    Vinkkejä Python-ohjelmointiin - Tietorakenteet ja algoritmit kevät 2023
+    
+  </title>
+  <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        CommonHTML: {
+          scale: 87
+        }
+      });
+      </script>
+  <script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  <link rel='stylesheet' type='text/css' media='screen' href=/kevat-2023/assets/css/main.css>
+  <link rel='stylesheet' type='text/css' media='screen' href=/kevat-2023/assets/css/syntax.css>
+
+  <script src=/kevat-2023/assets/js/main.js></script>
+
+</head>
+
+
+<body id="chapter">
+    
+<nav class="no-nav" id="side-nav" >
+    <button id="hide" onclick="hideSideNav()"> &#x2715;</button>
+    <button id="show" onclick="showSideNav()"> </button>
+    <h2>Tietorakenteet ja algoritmit kevät 2023</h2>
+    
+    <ol>
+
+        <li class="side-nav-obj" id="indexnav"><a href=/kevat-2023/index>Etusivu </a></li>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <li class="side-nav-obj" id="Materiaalinav"><a href="/kevat-2023/pages/materiaali.html">Materiaali</a></li>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <li class="side-nav-obj" id="Tehtävätnav"><a href="/kevat-2023/pages/tehtavat.html">Tehtävät</a></li>
+        
+        
+        
+        <li class="side-nav-obj" id="Tulokset ja palautenav"><a href="/kevat-2023/pages/tulokset-palaute.html">Tulokset ja palaute</a></li>
+        
+        
+        
+        
+        
+        
+        
+        
+        <br>
+        
+    </ol>
+</nav>
+    <div class="page-content">
+        <div class="content">
+    <div class="table-of-content" id="tof" style="display: none;">
+    <ul>
+        
+    </ul>
+</div>
+
+    <h1 id="vinkkejä-python-ohjelmointiin">Vinkkejä Python-ohjelmointiin</h1>
+
+<h2 id="lukujen-käsittely">Lukujen käsittely</h2>
+
+<h3 id="kokonaisluvut">Kokonaisluvut</h3>
+
+<p>Pythonissa kokonaisluvut voivat olla miten pitkiä tahansa,
+minkä ansiosta suuriakin kokonaislukuja voi käsitellä koodissa huoletta.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">123456789</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">987654321</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">)</span> <span class="c1"># 121932631112635269
+</span></code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">99</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="n">x</span><span class="p">)</span> <span class="c1"># 369729637649726772657187905628805440595668764281741102430259972423552570455277523421410650010128232727940978889548326540119429996769494359451621570193644014418071060667659301384999779999159200499899
+</span></code></pre></div></div>
+
+<h3 id="liukuluvut">Liukuluvut</h3>
+
+<p>Liukulukujen etuna on, että niissä voi olla desimaaliosa:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="n">x</span> <span class="o">=</span> <span class="mf">12.527</span>
+</code></pre></div></div>
+
+<p>Liukuluvuissa on kuitenkin ongelmana, että niissä tapahtuu pyöristysvirheitä.
+Seuraava koodi havainnollistaa asiaa:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="mf">0.3</span><span class="o">+</span><span class="mf">0.1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">y</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"x ja y ovat samat"</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"x on pienempi kuin y"</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"x on suurempi kuin y"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Vaikka <code class="language-html highlighter-rouge">x</code>:n ja <code class="language-html highlighter-rouge">y</code>:n arvon pitäisi olla sama,
+koodi tulostaa <code class="language-html highlighter-rouge">x on pienempi kuin y</code>.
+Syynä on, että laskua <code class="language-html highlighter-rouge">3*0.3+0.1</code> ei pystytä laskemaan tarkasti,
+vaan <code class="language-html highlighter-rouge">x</code>:n arvoksi tulee hieman alle 1.</p>
+
+<p>Tämän vuoksi liukulukuja kannattaa välttää <em>aina kun mahdollista</em>.
+Yleensä löytyy jokin tapa, miten algoritmin voi toteuttaa tarkasti ilman liukulukuja.</p>
+
+<h2 id="lause-ja-lauseke">Lause ja lauseke</h2>
+
+<p><em>Lause</em> (<em>statement</em>) on ohjelmassa oleva komento,
+kun taas <em>lauseke</em> (<em>expression</em>) on jokin koodin osa, jolla on arvo.
+Esimerkiksi <code class="language-html highlighter-rouge">print(a+b)</code> on lause, jonka osana on lauseke <code class="language-html highlighter-rouge">a+b</code>.</p>
+
+<p>Toisaalta koska <code class="language-html highlighter-rouge">print</code> on funktio, niin se myös palauttaa arvon.
+Koska funktiolla ei ole muuta arvoa, se palauttaa <code class="language-html highlighter-rouge">None</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="k">print</span><span class="p">(</span><span class="k">print</span><span class="p">(</span><span class="s">"moi"</span><span class="p">))</span> <span class="c1"># None
+</span></code></pre></div></div>
+
+<p>Ehdollinen lauseke <code class="language-html highlighter-rouge">b if a else c</code> on arvoltaan <code class="language-html highlighter-rouge">b</code>,
+jos ehto <code class="language-html highlighter-rouge">a</code> pätee, ja muuten <code class="language-html highlighter-rouge">c</code>.
+Esimerkiksi seuraavassa koodissa ehdollisen lausekkeen arvo
+on <code class="language-html highlighter-rouge">"parillinen"</code>, jos ehto <code class="language-html highlighter-rouge">x%2 == 0</code> pätee
+(eli <code class="language-html highlighter-rouge">x</code> on parillinen), ja muuten <code class="language-html highlighter-rouge">"pariton"</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="n">s</span> <span class="o">=</span> <span class="s">"parillinen"</span> <span class="k">if</span> <span class="n">x</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s">"pariton"</span>
+</code></pre></div></div>
+
+<h2 id="lista">Lista</h2>
+
+<p>Pythonin perustietorakenne on <em>lista</em>,
+joka muodostuu peräkkäin olevista alkioista.
+Taulukon alkiot on numeroitu kokonaisluvuin
+0, 1, 2, jne., ja niihin viitataan <code class="language-html highlighter-rouge">[]</code> -merkinnän avulla.</p>
+
+<p>Seuraava koodi luo lista <code class="language-html highlighter-rouge">luvut</code>, jossa on 5 alkiota.
+Jokainen arvo on aluksi 0.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="n">luvut</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">5</span>
+</code></pre></div></div>
+
+<p>Toinen tapa luoda lista on antaa sen alkiot listana:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="n">luvut</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>Listan alkioita voi käsitellä samaan tapaan kuin tavallisia muuttujia:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="n">luvut</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">luvut</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">luvut</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">luvut</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">luvut</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>Listan sisällön pystyy tulostamaan helposti:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="n">luvut</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">luvut</span><span class="p">)</span> <span class="c1"># [1, 2, 3]
+</span></code></pre></div></div>
+
+<h2 id="viittaukset-ja-kopiointi">Viittaukset ja kopiointi</h2>
+
+<p>Pythonissa kaikki muuttujat ovat viittaustyyppisiä, eli ne osoittavat muistissa olevaan tietoon. Tällä ei ole merkitystä lukujen ja merkkijonojen käsittelyssä, koska niiden sisältö ei voi muuttua, mutta esimerkiksi listojen kanssa voi tulla yllätyksiä.</p>
+
+<p>Seuraavan koodin toiminnassa ei ole mitään yllättävää:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># 3
+</span></code></pre></div></div>
+
+<p>Kuitenkin kun saman koodin toteuttaa listoilla,
+tulee yllättävämpi tulos:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># 5
+</span></code></pre></div></div>
+
+<p>Tässä <code class="language-html highlighter-rouge">a</code> ja <code class="language-html highlighter-rouge">b</code> viittaavat <em>samaan</em> listaan,
+eli kun listaa <code class="language-html highlighter-rouge">b</code> muuttaa, niin muutos heijastuu
+myös listaa <code class="language-html highlighter-rouge">a</code>.
+Tämä on yleinen syy bugeihin Python-ohjelmissa.</p>
+
+<p>Jos taulukosta halutaan tehdä aito kopio,
+jonka muuttaminen ei vaikuta alkuperäiseen taulukkoon,
+yksi tapa on käyttää <code class="language-html highlighter-rouge">[:]</code>-syntaksia:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:]</span>
+<span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># 1
+</span></code></pre></div></div>
+
+<h2 id="merkkijonot">Merkkijonot</h2>
+
+<p>Toisin kuin monissa kielissä, Pythonissa ei ole erikseen
+tyyppejä merkki ja merkkijono, vaan merkki on merkkijono,
+jossa on vain yksi merkki.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="n">c</span> <span class="o">=</span> <span class="s">"a"</span> <span class="c1"># merkki
+</span><span class="n">s</span> <span class="o">=</span> <span class="s">"apina"</span> <span class="c1"># merkkijono
+</span></code></pre></div></div>
+
+<p>Tietyssä kohdassa olevan merkin saa haettua <code class="language-html highlighter-rouge">[]</code>-syntaksilla:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="n">s</span> <span class="o">=</span> <span class="s">"apina"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># p
+</span></code></pre></div></div>
+
+<p>Huomaa kuitenkin, että merkkijonoa ei pysty muuttamaan.</p>
+
+<p>Funktio <code class="language-html highlighter-rouge">ord</code> antaa merkkiä vastaavan merkkikoodin,
+ja vastaavasti funktio <code class="language-html highlighter-rouge">chr</code> antaa merkkikoodia vastaavan merkin.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="k">print</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s">"A"</span><span class="p">))</span> <span class="c1"># 65
+</span><span class="k">print</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="mi">65</span><span class="p">))</span> <span class="c1"># A
+</span></code></pre></div></div>
+
+<p>Kätevä tapa tuottaa suuria merkkijonoja on käyttää monistamista.
+Esimerkiksi seuraava koodi rakentaa merkkijonon,
+jossa on miljoona <code class="language-html highlighter-rouge">a</code>-merkkiä:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="n">s</span> <span class="o">=</span> <span class="s">"a"</span><span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="mi">6</span>
+</code></pre></div></div>
+
+<h2 id="komentorivin-käyttäminen">Komentorivin käyttäminen</h2>
+
+<p>On hyödyllinen taito osata suorittaa Python-koodi
+komentorivillä.
+Tällöin ohjelmoijalla on täysi kontrolli asioihin,
+toisin kuin IDEä (esim. VS Code) käyttäessä.</p>
+
+<p>Seuraavat esimerkit olettavat, että käytössä on Linux-ympäristö.
+Muissa ympäristöissä komentoriviä käytetään melko samalla tavalla.</p>
+
+<h3 id="koodin-suoritus">Koodin suoritus</h3>
+
+<p>Seuraava komento suorittaa tiedostossa <code class="language-html highlighter-rouge">koodi.py</code> olevan Python-koodin:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$ python3 koodi.py
+</code></pre></div></div>
+
+<p>Huomaa, että pelkkä komento <code class="language-html highlighter-rouge">python</code> saattaa suorittaa koodin
+Pythonin vanhalla 2-versiolla, joka ei ole yhteensopiva
+nykyään käytössä olevan 3-version kanssa.</p>
+
+<h3 id="komentoriviparametrit">Komentoriviparametrit</h3>
+
+<p>Moduulin <code class="language-html highlighter-rouge">sys</code> lista <code class="language-html highlighter-rouge">argv</code> sisältää ohjelmalle
+annetut komentoriviparametrit.
+Esimerkiksi seuraava ohjelma tulostaa kaikki parametrinsa:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">sys</span><span class="p">.</span><span class="n">argv</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Voimme testata ohjelmaa suorittamalla se näin:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$ python3 koodi.py apina banaani cembalo
+</code></pre></div></div>
+
+<p>Nyt ohjelman tulostus on seuraava:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>test.py
+apina
+banaani
+cembalo
+</code></pre></div></div>
+
+<p>Huomaa, että ensimmäinen parametri on Python-tiedoston nimi.</p>
+
+</div>
+        <div class="footer">
+    <img src=/kevat-2023/assets/img/HY_logo.png>
+    </div>
+    </div>
+</body>
+
+</html>

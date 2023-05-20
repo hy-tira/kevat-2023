@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>
+    
+    Binääripuun piirtäminen (Python) - Tietorakenteet ja algoritmit kevät 2023
+    
+  </title>
+  <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        CommonHTML: {
+          scale: 87
+        }
+      });
+      </script>
+  <script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  <link rel='stylesheet' type='text/css' media='screen' href=/kevat-2023/assets/css/main.css>
+  <link rel='stylesheet' type='text/css' media='screen' href=/kevat-2023/assets/css/syntax.css>
+
+  <script src=/kevat-2023/assets/js/main.js></script>
+
+</head>
+
+
+<body id="chapter">
+    
+<nav class="no-nav" id="side-nav" >
+    <button id="hide" onclick="hideSideNav()"> &#x2715;</button>
+    <button id="show" onclick="showSideNav()"> </button>
+    <h2>Tietorakenteet ja algoritmit kevät 2023</h2>
+    
+    <ol>
+
+        <li class="side-nav-obj" id="indexnav"><a href=/kevat-2023/index>Etusivu </a></li>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <li class="side-nav-obj" id="Materiaalinav"><a href="/kevat-2023/pages/materiaali.html">Materiaali</a></li>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <li class="side-nav-obj" id="Tehtävätnav"><a href="/kevat-2023/pages/tehtavat.html">Tehtävät</a></li>
+        
+        
+        
+        <li class="side-nav-obj" id="Tulokset ja palautenav"><a href="/kevat-2023/pages/tulokset-palaute.html">Tulokset ja palaute</a></li>
+        
+        
+        
+        
+        
+        
+        
+        
+        <br>
+        
+    </ol>
+</nav>
+    <div class="page-content">
+        <div class="content">
+    <div class="table-of-content" id="tof" style="display: none;">
+    <ul>
+        
+    </ul>
+</div>
+
+    <h1 id="binääripuun-piirtäminen-python">Binääripuun piirtäminen (Python)</h1>
+
+<p>Binääripuun rakenteen hahmottaminen on vähintäänkin vaikeaa katsomalla koodia, joka muodostaa binääripuun.</p>
+
+<p>Apuun tulee seuraava koodi, joka piirtää binääripuun <code class="language-html highlighter-rouge">turtle</code>-kirjaston avulla. Kuten muutkin binääripuuhun liittyvät asiat, piirtäminen onnistuu kätevästi rekursion avulla.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="kn">from</span> <span class="nn">turtle</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
+
+<span class="n">Node</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s">"Node"</span><span class="p">,[</span><span class="s">"left"</span><span class="p">,</span><span class="s">"right"</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">count</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">node</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">count</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="n">left</span><span class="p">)</span><span class="o">+</span><span class="n">count</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="n">right</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
+
+<span class="k">def</span> <span class="nf">draw_tree</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">node</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="n">goto</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">stamp</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">node</span><span class="p">.</span><span class="n">left</span><span class="p">:</span>
+        <span class="n">draw_tree</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="n">left</span><span class="p">,</span><span class="n">x</span><span class="o">-</span><span class="p">(</span><span class="n">count</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="n">left</span><span class="p">.</span><span class="n">right</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">30</span><span class="p">,</span><span class="n">y</span><span class="o">-</span><span class="mi">40</span><span class="p">)</span>
+        <span class="n">goto</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">node</span><span class="p">.</span><span class="n">right</span><span class="p">:</span>
+        <span class="n">draw_tree</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="n">right</span><span class="p">,</span><span class="n">x</span><span class="o">+</span><span class="p">(</span><span class="n">count</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="n">right</span><span class="p">.</span><span class="n">left</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">30</span><span class="p">,</span><span class="n">y</span><span class="o">-</span><span class="mi">40</span><span class="p">)</span>
+        <span class="n">goto</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># tässä on binääripuu, joka halutaan piirtää
+</span><span class="n">tree</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span>
+    <span class="n">Node</span><span class="p">(</span><span class="n">Node</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">),</span><span class="n">Node</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">)),</span>
+    <span class="n">Node</span><span class="p">(</span><span class="n">Node</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">),</span><span class="n">Node</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">))</span>
+<span class="p">)</span>
+
+<span class="n">shape</span><span class="p">(</span><span class="s">"circle"</span><span class="p">)</span>
+<span class="n">draw_tree</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">done</span><span class="p">()</span>
+</code></pre></div></div>
+
+</div>
+        <div class="footer">
+    <img src=/kevat-2023/assets/img/HY_logo.png>
+    </div>
+    </div>
+</body>
+
+</html>

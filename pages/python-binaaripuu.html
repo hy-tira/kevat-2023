@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>
+    
+    Binääripuun toteutus (Python) - Tietorakenteet ja algoritmit kevät 2023
+    
+  </title>
+  <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        CommonHTML: {
+          scale: 87
+        }
+      });
+      </script>
+  <script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  <link rel='stylesheet' type='text/css' media='screen' href=/kevat-2023/assets/css/main.css>
+  <link rel='stylesheet' type='text/css' media='screen' href=/kevat-2023/assets/css/syntax.css>
+
+  <script src=/kevat-2023/assets/js/main.js></script>
+
+</head>
+
+
+<body id="chapter">
+    
+<nav class="no-nav" id="side-nav" >
+    <button id="hide" onclick="hideSideNav()"> &#x2715;</button>
+    <button id="show" onclick="showSideNav()"> </button>
+    <h2>Tietorakenteet ja algoritmit kevät 2023</h2>
+    
+    <ol>
+
+        <li class="side-nav-obj" id="indexnav"><a href=/kevat-2023/index>Etusivu </a></li>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <li class="side-nav-obj" id="Materiaalinav"><a href="/kevat-2023/pages/materiaali.html">Materiaali</a></li>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <li class="side-nav-obj" id="Tehtävätnav"><a href="/kevat-2023/pages/tehtavat.html">Tehtävät</a></li>
+        
+        
+        
+        <li class="side-nav-obj" id="Tulokset ja palautenav"><a href="/kevat-2023/pages/tulokset-palaute.html">Tulokset ja palaute</a></li>
+        
+        
+        
+        
+        
+        
+        
+        
+        <br>
+        
+    </ol>
+</nav>
+    <div class="page-content">
+        <div class="content">
+    <div class="table-of-content" id="tof" style="display: none;">
+    <ul>
+        
+    </ul>
+</div>
+
+    <h1 id="binääripuun-toteutus-python">Binääripuun toteutus (Python)</h1>
+
+<p>Miten binääripuu toteutetaan käytännössä Pythonilla? Seuraavassa on yksi hyvä toteutustapa, joka on käytössä tämän viikon tehtävissä.</p>
+
+<h2 id="tyyppi-node">Tyyppi Node</h2>
+
+<p>Pythonissa kätevä tapa tallentaa binääripuun solmun sisältö on käyttää <code class="language-html highlighter-rouge">namedtuple</code>-rakennetta seuraavasti:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
+
+<span class="n">Node</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s">"Node"</span><span class="p">,[</span><span class="s">"left"</span><span class="p">,</span><span class="s">"right"</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p>Tämä luo tyypin <code class="language-html highlighter-rouge">Node</code>, jossa on kaksi kenttää <code class="language-html highlighter-rouge">left</code> ja <code class="language-html highlighter-rouge">right</code>.</p>
+
+<h2 id="puun-luominen">Puun luominen</h2>
+
+<p>Nyt voimme esittää minkä tahansa binääripuun <code class="language-html highlighter-rouge">Node</code>-olioina. Tarkastellaan esimerkkinä seuraavaa binääripuuta:</p>
+
+<p><img src="binaaripuu.png" style="border-color:black;border-width:1px;border-style:solid;" /></p>
+
+<p>Seuraava koodi luo jokaista solmua vastaavan olion ja asettaa lapset oikealla tavalla:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="n">node4</span> <span class="o">=</span> <span class="nc">Node</span><span class="o">(</span><span class="nc">None</span><span class="o">,</span><span class="nc">None</span><span class="o">)</span>
+<span class="n">node5</span> <span class="o">=</span> <span class="nc">Node</span><span class="o">(</span><span class="nc">None</span><span class="o">,</span><span class="nc">None</span><span class="o">)</span>
+<span class="n">node6</span> <span class="o">=</span> <span class="nc">Node</span><span class="o">(</span><span class="nc">None</span><span class="o">,</span><span class="nc">None</span><span class="o">)</span>
+<span class="n">node7</span> <span class="o">=</span> <span class="nc">Node</span><span class="o">(</span><span class="nc">None</span><span class="o">,</span><span class="nc">None</span><span class="o">)</span>
+<span class="n">node2</span> <span class="o">=</span> <span class="nc">Node</span><span class="o">(</span><span class="n">node4</span><span class="o">,</span><span class="n">node5</span><span class="o">)</span>
+<span class="n">node3</span> <span class="o">=</span> <span class="nc">Node</span><span class="o">(</span><span class="n">node6</span><span class="o">,</span><span class="n">node7</span><span class="o">)</span>
+<span class="n">node1</span> <span class="o">=</span> <span class="nc">Node</span><span class="o">(</span><span class="n">node2</span><span class="o">,</span><span class="n">node3</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>Yllä oleva koodi rakentaa puun alhaalta ylöspäin, jotta linkit lapsiin voidaan asettaa suoraan. Huomaa myös, että olioissa ei ole tietoa solmujen numeroista, vaan vain puun rakenne tallennetaan.</p>
+
+<p>Toinen tapa rakentaa puu on muodostaa oliot sisäkkäin, jolloin joka solmulle ei luoda omaa muuttujaa. Voimme rakentaa äskeisen puun myös näin:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="n">tree</span> <span class="o">=</span> <span class="nc">Node</span><span class="o">(</span>
+    <span class="nc">Node</span><span class="o">(</span><span class="nc">Node</span><span class="o">(</span><span class="nc">None</span><span class="o">,</span><span class="nc">None</span><span class="o">),</span><span class="nc">Node</span><span class="o">(</span><span class="nc">None</span><span class="o">,</span><span class="nc">None</span><span class="o">)),</span>
+    <span class="nc">Node</span><span class="o">(</span><span class="nc">Node</span><span class="o">(</span><span class="nc">None</span><span class="o">,</span><span class="nc">None</span><span class="o">),</span><span class="nc">Node</span><span class="o">(</span><span class="nc">None</span><span class="o">,</span><span class="nc">None</span><span class="o">))</span>
+<span class="o">)</span>
+</code></pre></div></div>
+
+<h2 id="puun-käsittely">Puun käsittely</h2>
+
+<p>Seuraava funktio laskee binääripuun solmujen määrän:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="k">def</span> <span class="nf">count</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">node</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">count</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="n">left</span><span class="p">)</span><span class="o">+</span><span class="n">count</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="n">right</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
+</code></pre></div></div>
+
+<p>Tämä funktio vastaa Tirakirjan sivulla 61 annettua pseudokoodia. Ideana on laskea solmut rekursiivisesti ja lopettaa laskeminen, kun tullaan olemattomaan solmuun.</p>
+
+<p>Huomaa syntaksi <code class="language-html highlighter-rouge">if not node</code>, joka tunnistaa tilanteen, jossa <code class="language-html highlighter-rouge">node</code> on <code class="language-html highlighter-rouge">None</code> eli solmua ei ole olemassa.</p>
+
+</div>
+        <div class="footer">
+    <img src=/kevat-2023/assets/img/HY_logo.png>
+    </div>
+    </div>
+</body>
+
+</html>

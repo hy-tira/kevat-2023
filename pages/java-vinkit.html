@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>
+    
+    Vinkkejä Java-ohjelmointiin - Tietorakenteet ja algoritmit kevät 2023
+    
+  </title>
+  <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        CommonHTML: {
+          scale: 87
+        }
+      });
+      </script>
+  <script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  <link rel='stylesheet' type='text/css' media='screen' href=/kevat-2023/assets/css/main.css>
+  <link rel='stylesheet' type='text/css' media='screen' href=/kevat-2023/assets/css/syntax.css>
+
+  <script src=/kevat-2023/assets/js/main.js></script>
+
+</head>
+
+
+<body id="chapter">
+    
+<nav class="no-nav" id="side-nav" >
+    <button id="hide" onclick="hideSideNav()"> &#x2715;</button>
+    <button id="show" onclick="showSideNav()"> </button>
+    <h2>Tietorakenteet ja algoritmit kevät 2023</h2>
+    
+    <ol>
+
+        <li class="side-nav-obj" id="indexnav"><a href=/kevat-2023/index>Etusivu </a></li>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <li class="side-nav-obj" id="Materiaalinav"><a href="/kevat-2023/pages/materiaali.html">Materiaali</a></li>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <li class="side-nav-obj" id="Tehtävätnav"><a href="/kevat-2023/pages/tehtavat.html">Tehtävät</a></li>
+        
+        
+        
+        <li class="side-nav-obj" id="Tulokset ja palautenav"><a href="/kevat-2023/pages/tulokset-palaute.html">Tulokset ja palaute</a></li>
+        
+        
+        
+        
+        
+        
+        
+        
+        <br>
+        
+    </ol>
+</nav>
+    <div class="page-content">
+        <div class="content">
+    <div class="table-of-content" id="tof" style="display: none;">
+    <ul>
+        
+    </ul>
+</div>
+
+    <h1 id="vinkkejä-java-ohjelmointiin">Vinkkejä Java-ohjelmointiin</h1>
+
+<h2 id="lukujen-käsittely">Lukujen käsittely</h2>
+
+<h3 id="kokonaisluvut">Kokonaisluvut</h3>
+
+<p>Javan tavallisimmat kokonaislukutyypit ovat
+<code class="language-id">int</code> ja
+<code class="language-id">long</code>.
+Tyyppi <code class="language-id">int</code> on 32-bittinen,
+ja siinä olevan luvun suuruus
+voi olla noin 2 &middot; 10<sup>9</sup>.
+Tyyppi <code class="language-id">long</code> on puolestaan 64-bittinen,
+ja siinä olevan luvun suuruus voi olla noin 9 &middot; 10<sup>18</sup>.</p>
+
+<p>Yleensä hyvä valinta kokonaisluvun tyypiksi on <code class="language-html highlighter-rouge">int</code>.
+Jos sen arvoalue on liian pieni, voi käyttää
+suurempaa tyyppiä <code class="language-html highlighter-rouge">long</code>.</p>
+
+<p>Jos käytetyn tyypin arvoalue loppuu kesken, tapahtuu <em>ylivuoto</em>
+(<em>overflow</em>), mikä näkyy usein siinä, että koodin tuloksena
+on negatiivinen luku, vaikka sellaista ei pitäisi tulla.
+Näin käy esimerkiksi seuraavassa koodissa:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">123456789</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">987654321</span><span class="o">;</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="o">);</span> <span class="c1">// -67153019</span>
+</code></pre></div></div>
+
+<p>Tässä on ongelmana, että laskun tulos ei mahdu <code class="language-html highlighter-rouge">int</code>-tyyppiin.
+Ongelman voi korjata käyttämällä <code class="language-html highlighter-rouge">long</code>-tyyppiä:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="kt">long</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">123456789</span><span class="o">;</span>
+<span class="kt">long</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">987654321</span><span class="o">;</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="o">);</span> <span class="c1">// 121932631112635269</span>
+</code></pre></div></div>
+
+<p>Seuraavassa koodissa on vielä yksi sudenkuoppa:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="kt">long</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">123456789</span><span class="o">*</span><span class="mi">987654321</span><span class="o">;</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">x</span><span class="o">);</span> <span class="c1">// -67153019</span>
+</code></pre></div></div>
+
+<p>Nyt vaikka muuttujan <code class="language-html highlighter-rouge">x</code> tyyppi on <code class="language-html highlighter-rouge">long</code>,
+kertolasku lasketaan edelleen <code class="language-html highlighter-rouge">int</code>-tyypillä.
+Yksi tapa korjata asia on muuttaa toinen luvuista
+<code class="language-html highlighter-rouge">long</code>-tyyppiseksi näin:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="kt">long</span> <span class="n">x</span> <span class="o">=</span> <span class="o">(</span><span class="kt">long</span><span class="o">)</span><span class="mi">123456789</span><span class="o">*</span><span class="mi">987654321</span><span class="o">;</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">x</span><span class="o">);</span> <span class="c1">// 121932631112635269</span>
+</code></pre></div></div>
+
+<p>Kuten tästä näkyy, <code class="language-html highlighter-rouge">long</code>-tyypin käyttäminen vaatii tarkkuutta.
+Usein jos koodi antaa outoja tuloksia, jossain kohtaa on kuitenkin
+käytetty vahingossa <code class="language-html highlighter-rouge">int</code>-tyyppiä.</p>
+
+<h3 id="liukuluvut">Liukuluvut</h3>
+
+<p>Javan tavallisin liukulukutyyppi on 64-bittinen <code class="language-html highlighter-rouge">double</code>.
+Liukulukujen etuna on, että niissä voi olla desimaaliosa:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">12.527</span><span class="o">;</span>
+</code></pre></div></div>
+
+<p>Liukuluvuissa on kuitenkin ongelmana, että niissä tapahtuu pyöristysvirheitä.
+Seuraava koodi havainnollistaa asiaa:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="mf">0.3</span><span class="o">+</span><span class="mf">0.1</span><span class="o">;</span>
+<span class="kt">double</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">x</span> <span class="o">==</span> <span class="n">y</span><span class="o">)</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"x ja y ovat samat"</span><span class="o">);</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="o">)</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"x on pienempi kuin y"</span><span class="o">);</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="o">)</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"x on suurempi kuin y"</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Vaikka <code class="language-html highlighter-rouge">x</code>:n ja <code class="language-html highlighter-rouge">y</code>:n arvon pitäisi olla sama,
+koodi tulostaa <code class="language-html highlighter-rouge">x on pienempi kuin y</code>.
+Syynä on, että laskua <code class="language-html highlighter-rouge">3*0.3+0.1</code> ei pystytä laskemaan tarkasti,
+vaan <code class="language-html highlighter-rouge">x</code>:n arvoksi tulee hieman alle 1.</p>
+
+<p>Tämän vuoksi liukulukuja kannattaa välttää <em>aina kun mahdollista</em>.
+Yleensä löytyy jokin tapa, miten algoritmin voi toteuttaa tarkasti ilman liukulukuja.</p>
+
+<h2 id="lause-ja-lauseke">Lause ja lauseke</h2>
+
+<p><em>Lause</em> (<em>statement</em>) on ohjelmassa oleva komento,
+kun taas <em>lauseke</em> (<em>expression</em>) on jokin koodin osa, jolla on arvo.
+Esimerkiksi <code class="language-html highlighter-rouge">System.out.println(a+b)</code> on lause,
+jonka osana on lauseke <code class="language-html highlighter-rouge">a+b</code>.</p>
+
+<p>Javassa melko moni lauseelta näyttävä ilmaisu on itse asiassa
+lauseke, jolla on arvo.
+Esimerkiksi sijoitus <code class="language-html highlighter-rouge">a = b</code> on lauseke,
+jonka arvona on <code class="language-html highlighter-rouge">b</code>.
+Seuraava koodi samaan aikaan sijoittaa muuttujan <code class="language-html highlighter-rouge">a</code> arvoksi 5
+ja tulostaa arvon.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span><span class="o">);</span> <span class="c1">// 5</span>
+</code></pre></div></div>
+
+<h3 id="muutos-yhdellä">Muutos yhdellä</h3>
+
+<p>Lausekkeet <code class="language-html highlighter-rouge">a++</code> ja <code class="language-html highlighter-rouge">++a</code> kasvattavat molemmat <code class="language-html highlighter-rouge">a</code>:n arvoa yhdellä,
+mutta <code class="language-html highlighter-rouge">a++</code> on arvoltaan <code class="language-html highlighter-rouge">a</code>, kun taas <code class="language-html highlighter-rouge">++a</code> on arvoltaan <code class="language-html highlighter-rouge">a+1</code>.
+Seuraavat koodit havainnollistavat asiaa:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span><span class="o">++);</span> <span class="c1">// 3</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span><span class="o">);</span> <span class="c1">// 4</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(++</span><span class="n">a</span><span class="o">);</span> <span class="c1">// 4</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span><span class="o">);</span> <span class="c1">// 4</span>
+</code></pre></div></div>
+
+<h3 id="ehdollinen-lauseke">Ehdollinen lauseke</h3>
+
+<p>Ehdollinen lauseke <code class="language-html highlighter-rouge">a ? b : c</code> on arvoltaan <code class="language-html highlighter-rouge">b</code>,
+jos ehto <code class="language-html highlighter-rouge">a</code> pätee, ja muuten <code class="language-html highlighter-rouge">c</code>.
+Esimerkiksi seuraavassa koodissa ehdollisen lausekkeen arvo
+on <code class="language-html highlighter-rouge">"parillinen"</code>, jos ehto <code class="language-html highlighter-rouge">x%2 == 0</code> pätee
+(eli <code class="language-html highlighter-rouge">x</code> on parillinen), ja muuten <code class="language-html highlighter-rouge">"pariton"</code>.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="kt">int</span> <span class="n">x</span><span class="o">;</span>
+<span class="c1">// ...</span>
+<span class="nc">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">x</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">?</span> <span class="s">"parillinen"</span> <span class="o">:</span> <span class="s">"pariton"</span><span class="o">;</span>
+</code></pre></div></div>
+
+<h2 id="taulukko">Taulukko</h2>
+
+<p>Javan perustietorakenne on <em>taulukko</em>,
+joka muodostuu peräkkäin olevista alkioista.
+Taulukon alkiot on numeroitu kokonaisluvuin
+0, 1, 2, jne., ja niihin viitataan <code class="language-html highlighter-rouge">[]</code> -merkinnän avulla.</p>
+
+<p>Taulukko on hyvä valinta algoritmien toteuttamisessa,
+jos sen ominaisuudet riittävät,
+koska se on paljon kevyempi kuin esimerkiksi <code class="language-html highlighter-rouge">ArrayList</code>-rakenne.</p>
+
+<h3 id="taulukon-käsittely">Taulukon käsittely</h3>
+
+<p>Seuraava koodi luo taulukon <code class="language-html highlighter-rouge">luvut</code>, jossa on 5 alkiota.
+Jokainen arvo on aluksi 0.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">luvut</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">5</span><span class="o">];</span>
+</code></pre></div></div>
+
+<p>Toinen tapa luoda taulukko on antaa sen alkiot listana:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">luvut</span> <span class="o">=</span> <span class="o">{</span><span class="mi">3</span><span class="o">,</span><span class="mi">1</span><span class="o">,</span><span class="mi">5</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">5</span><span class="o">};</span>
+</code></pre></div></div>
+
+<p>Taulukon alkioita voi käsitellä samaan tapaan kuin tavallisia muuttujia:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="n">luvut</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+<span class="n">luvut</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
+<span class="n">luvut</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="n">luvut</span><span class="o">[</span><span class="mi">0</span><span class="o">]+</span><span class="n">luvut</span><span class="o">[</span><span class="mi">1</span><span class="o">];</span>
+</code></pre></div></div>
+
+<h3 id="taulukon-tulostaminen">Taulukon tulostaminen</h3>
+
+<p>Taulukon tulostaminen vaatii hieman työtä,
+koska seuraava koodi ei toimi halutusti:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">luvut</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">};</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">luvut</span><span class="o">);</span> <span class="c1">// [I@3cd1a2f1</span>
+</code></pre></div></div>
+
+<p>Taulukon pystyy kuitenkin tulostamaan näin:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">luvut</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">};</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">luvut</span><span class="o">));</span> <span class="c1">// [1, 2, 3]</span>
+</code></pre></div></div>
+
+<h2 id="viittaukset-ja-kopiointi">Viittaukset ja kopiointi</h2>
+
+<p>Javassa on kahdenlaisia muuttujia:
+alkeistyypin muuttujat (esim. <code class="language-html highlighter-rouge">int</code>)
+ja oliomuuttujat (esim. taulukko).
+Näiden muuttujien käsittelyssä on tärkeä ero:
+alkeismuuttujien arvo kopioidaan sijoituksessa
+ja metodin parametrina,
+mutta oliomuuttujasta kopioidaan vain viittaus.</p>
+
+<p>Esimerkiksi seuraavassa koodissa ei ole mitään yllättävää:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">;</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span><span class="o">);</span> <span class="c1">// 3</span>
+</code></pre></div></div>
+
+<p>Kuitenkin kun saman koodin toteuttaa taulukoilla,
+tulee yllättävämpi tulos:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">a</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">};</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">;</span>
+<span class="n">b</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span> <span class="c1">// 5</span>
+</code></pre></div></div>
+
+<p>Tässä <code class="language-html highlighter-rouge">a</code> ja <code class="language-html highlighter-rouge">b</code> viittaavat <em>samaan</em> taulukkoon,
+eli kun taulukkoa <code class="language-html highlighter-rouge">b</code> muuttaa, niin muutos heijastuu
+myös taulukkoon <code class="language-html highlighter-rouge">a</code>.
+Tämä on yleinen syy bugeihin Java-ohjelmissa.</p>
+
+<p>Jos taulukosta halutaan tehdä aito kopio,
+jonka muuttaminen ei vaikuta alkuperäiseen taulukkoon,
+ratkaisu on käyttää metodia <code class="language-html highlighter-rouge">clone</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">a</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">};</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="na">clone</span><span class="o">();</span>
+<span class="n">b</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span> <span class="c1">// 1</span>
+</code></pre></div></div>
+
+<h2 id="merkkijonot">Merkkijonot</h2>
+
+<h3 id="merkki-vs-merkkijono">Merkki vs. merkkijono</h3>
+
+<p>Merkki (<code class="language-html highlighter-rouge">char</code>) on yksittäinen symboli,
+kuten kirjain tai numero. Merkki kirjoitetaan koodissa
+heittomerkkien sisään.</p>
+
+<p>Merkkijono (<code class="language-html highlighter-rouge">String</code>) on jono peräkkäin olevia merkkejä.
+Merkkijono kirjoitetaan koodissa lainausmerkkien sisään.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="sc">'a'</span><span class="o">;</span>
+<span class="nc">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">"apina"</span><span class="o">;</span>
+</code></pre></div></div>
+
+<p>Metodi <code class="language-html highlighter-rouge">charAt</code> antaa tietyssä kohtaa merkkijonoa olevan merkin:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="nc">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">"apina"</span><span class="o">;</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="mi">1</span><span class="o">));</span> <span class="c1">// p</span>
+</code></pre></div></div>
+
+<p>Merkkiä voidaan käsitellä myös lukuarvon tavoin.
+Seuraava koodi näyttää merkkiä vastaavan merkkikoodin ja
+merkkikoodia vastaavan merkin:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">((</span><span class="kt">int</span><span class="o">)</span><span class="sc">'A'</span><span class="o">);</span> <span class="c1">// 65</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">((</span><span class="kt">char</span><span class="o">)</span><span class="mi">65</span><span class="o">);</span> <span class="c1">// A</span>
+</code></pre></div></div>
+
+<h3 id="merkkijonojen-vertailu">Merkkijonojen vertailu</h3>
+
+<p>Seuraava koodi <em>ei</em> toimi oikein, jos <code class="language-html highlighter-rouge">a</code> ja <code class="language-html highlighter-rouge">b</code> ovat merkkijonoja,
+koska <code class="language-html highlighter-rouge">==</code>-operaattori vertailee viittauksia eikä sisältöjä.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="k">if</span> <span class="o">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// ...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Toimiva vertailu on käyttää metodia <code class="language-html highlighter-rouge">equals</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="k">if</span> <span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">b</span><span class="o">))</span> <span class="o">{</span>
+    <span class="c1">// ...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="merkkijonon-muuttaminen">Merkkijonon muuttaminen</h3>
+
+<p>Javassa merkkijonoa ei voi muuttaa sen luomisen jälkeen,
+vaan ainoa tapa on luoda uusi merkkijono.
+Esimerkiksi <code class="language-html highlighter-rouge">+=</code>-operaattori luo uuden merkkijonon
+kopioimalla sen pohjaksi alkuperäisen merkkijonon sisällön.
+Seuraavan koodin seurauksena muistissa on kolme merkkijonoa:
+<code class="language-html highlighter-rouge">"apina"</code>, <code class="language-html highlighter-rouge">"x"</code> ja <code class="language-html highlighter-rouge">"apinax"</code>.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="nc">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">"apina"</span><span class="o">;</span>
+<span class="n">s</span> <span class="o">+=</span> <span class="s">"x"</span><span class="o">;</span>
+</code></pre></div></div>
+
+<p>Seuraava koodi on <em>erittäin tehoton</em> tapa luoda merkkijono,
+jossa on miljoona a-merkkiä:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1000000</span><span class="o">;</span>
+<span class="nc">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">+</span><span class="s">"a"</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Ongelmana on, että silmukan jokainen askel luo uuden merkkijonon,
+eli koodi luo merkkijonot <code class="language-html highlighter-rouge">"a"</code>, <code class="language-html highlighter-rouge">"aa"</code>, <code class="language-html highlighter-rouge">"aaa"</code>, jne.
+Tässä kuluu paljon aikaa ja muistia.
+Tehokas tapa luoda tällainen merkkijono on sijoittaa merkit
+ensin <code class="language-html highlighter-rouge">char</code>-taulukkoon ja muuttaa se sitten merkkijonoksi:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1000000</span><span class="o">;</span>
+<span class="kt">char</span><span class="o">[]</span> <span class="n">c</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">char</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="n">c</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="sc">'a'</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="nc">String</span> <span class="n">s</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="n">c</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h2 id="int-vs-integer">int vs. Integer</h2>
+
+<p>Javassa alkeistyyppien (kuten <code class="language-html highlighter-rouge">int</code>) rinnalla on
+vastaavia oliotyyppejä (kuten <code class="language-html highlighter-rouge">Integer</code>),
+jotka ovat omiaan aiheuttamaan sekaannusta.</p>
+
+<p>Oliotyypit ovat välttämätön paha Javan tietorakenteissa.
+Esimerkiksi kun luomme <code class="language-html highlighter-rouge">ArrayList</code>-rakenteen,
+jonka sisältönä on <code class="language-html highlighter-rouge">int</code>-lukuja, tyypiksi tulee antaa
+<code class="language-html highlighter-rouge">Integer</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">luvut</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+</code></pre></div></div>
+
+<p>Java tekee usein automaattisia muunnoksia tyyppien välillä.
+Esimerkiksi seuraava koodi toimii mainiosti,
+vaikka <code class="language-html highlighter-rouge">luvut</code> sisältää <code class="language-html highlighter-rouge">Integer</code>-lukuja ja koodi käyttää <code class="language-html highlighter-rouge">int</code>-lukuja:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="n">luvut</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+<span class="n">luvut</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+<span class="n">luvut</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+<span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">luvut</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Huomaa kuitenkin, että seuraava koodi <em>ei</em> ole toimiva:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="k">if</span> <span class="o">(</span><span class="n">luvut</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="o">==</span> <span class="n">luvut</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">))</span> <span class="o">{</span>
+    <span class="c1">// ...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Tässä ei tapahdu muunnosta <code class="language-html highlighter-rouge">int</code>-tyypiksi,
+vaan Java vertailee <code class="language-html highlighter-rouge">Integer</code>-lukuja.
+Nyt <code class="language-html highlighter-rouge">==</code>-operaattori ei toimi halutusti,
+vaan vertailu tulee tehdä <code class="language-html highlighter-rouge">equals</code>-metodilla:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="k">if</span> <span class="o">(</span><span class="n">luvut</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">).</span><span class="na">equals</span><span class="o">(</span><span class="n">luvut</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">)))</span> <span class="o">{</span>
+    <span class="c1">// ...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Asiaa mutkistaa vielä se, että <code class="language-html highlighter-rouge">==</code>-vertailu saattaa toimia näennäisesti,
+kun luvut ovat pieniä (esim. välillä –128…127),
+koska Java voi silloin vertailla niitä eri tavalla.
+Bugi tulee kuitenkin esille silloin, 
+kun koodi käsittelee suurempia lukuja.</p>
+
+<h2 id="static-muuttujat">static-muuttujat</h2>
+
+<p>Luokassa oleva <code class="language-html highlighter-rouge">static</code>-muuttuja on yhteinen kaikille
+luokasta luotaville olioille.
+Sen arvo säilyy tallessa olioiden välillä,
+toisin kuin tavallisen muuttujan arvo.
+Tarkastellaan esimerkkinä seuraavaa luokkaa:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Testi</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="kt">int</span> <span class="n">a</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">b</span><span class="o">;</span>
+    
+    <span class="kt">void</span> <span class="nf">tulosta</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">a</span><span class="o">++;</span> <span class="n">b</span><span class="o">++;</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">b</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Kun luokasta luodaan kaksi oliota,
+muuttuja <code class="language-html highlighter-rouge">a</code> on niille yhteinen,
+kun taas kummallakin oliolla on oma muuttuja <code class="language-html highlighter-rouge">b</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="nc">Testi</span> <span class="n">x</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Testi</span><span class="o">();</span>
+<span class="n">x</span><span class="o">.</span><span class="na">tulosta</span><span class="o">();</span> <span class="c1">// 1 1</span>
+<span class="nc">Testi</span> <span class="n">y</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Testi</span><span class="o">();</span>
+<span class="n">y</span><span class="o">.</span><span class="na">tulosta</span><span class="o">();</span> <span class="c1">// 2 1</span>
+</code></pre></div></div>
+
+<p>Moni outo bugi testatessa koodia johtuu siitä,
+että luokassa on käytetty <code class="language-html highlighter-rouge">static</code>-muuttujaa.
+Tällöin tietoa säilyy muuttujissa testien välillä,
+vaikka testit eivät liity toisiinsa.
+Ratkaisu on kerrankin helppo: kun sanan <code class="language-html highlighter-rouge">static</code> poistaa,
+niin koodi alkaa toimia moitteetta.</p>
+
+<h2 id="komentorivin-käyttäminen">Komentorivin käyttäminen</h2>
+
+<p>On hyödyllinen taito osata kääntää ja suorittaa Java-koodi
+komentorivillä.
+Tällöin ohjelmoijalla on täysi kontrolli asioihin,
+toisin kuin IDEä (esim. NetBeans) käyttäessä.</p>
+
+<p>Seuraavat esimerkit olettavat, että käytössä on Linux-ympäristö.
+Muissa ympäristöissä komentoriviä käytetään melko samalla tavalla.</p>
+
+<h3 id="käännös-ja-suoritus">Käännös ja suoritus</h3>
+
+<p>Seuraava komento kääntää tiedostossa <code class="language-html highlighter-rouge">Koodi.java</code> olevan luokan:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$ javac Koodi.java
+</code></pre></div></div>
+
+<p>Tästä syntyy käännetty tiedosto <code class="language-html highlighter-rouge">Koodi.class</code>, jonka voi suorittaa näin:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$ java Koodi
+</code></pre></div></div>
+
+<h3 id="komentoriviparametrit">Komentoriviparametrit</h3>
+
+<p>Metodin <code class="language-html highlighter-rouge">main</code> parametrina oleva taulukko <code class="language-html highlighter-rouge">args</code> sisältää parametrit,
+jotka ohjelmalle on annettu komentorivillä.
+Seuraava ohjelma tulostaa kaikki parametrinsa:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Koodi</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">args</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">i</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">args</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Voimme testata ohjelmaa suorittamalla se näin:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$ java Koodi apina banaani cembalo
+</code></pre></div></div>
+
+<p>Nyt ohjelman tulostus on seuraava:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>0 apina
+1 banaani
+2 cembalo
+</code></pre></div></div>
+
+</div>
+        <div class="footer">
+    <img src=/kevat-2023/assets/img/HY_logo.png>
+    </div>
+    </div>
+</body>
+
+</html>
